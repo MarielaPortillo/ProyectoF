@@ -12,4 +12,8 @@ export class BoletoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5950a1befba56186806b000d793945b39eebf991

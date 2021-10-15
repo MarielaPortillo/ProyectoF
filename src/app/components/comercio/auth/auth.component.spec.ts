@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BoletoComponent } from './boleto.component';
+import { AuthComponent } from './auth.component';
 
-describe('BoletoComponent', () => {
-  let component: BoletoComponent;
-  let fixture: ComponentFixture<BoletoComponent>;
+describe('AuthComponent', () => {
+  let component: AuthComponent;
+  let fixture: ComponentFixture<AuthComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BoletoComponent ]
+      declarations: [ AuthComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BoletoComponent);
+    fixture = TestBed.createComponent(AuthComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -22,8 +22,4 @@ describe('BoletoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 5950a1befba56186806b000d793945b39eebf991

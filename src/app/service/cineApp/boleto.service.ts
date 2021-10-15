@@ -13,10 +13,10 @@ const httpOptions = {
 };
 
 
+
 @Injectable({
   providedIn: 'root'
 })
-
 export class BoletoService {
   bs: string = 'http://localhost:3000';
 

@@ -1,9 +1,9 @@
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { peliculas } from '../../models/cineApp/pelicula';
-
+import { Injectable } from '@angular/core';
 
 const httpOptions = {
   headers: new HttpHeaders({ 
@@ -13,10 +13,14 @@ const httpOptions = {
   })
 };
 
+
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class PeliculaService {
+
 
     bs: string = 'http://localhost:3000';
 
@@ -52,3 +56,4 @@ export class PeliculaService {
   }
   
 }
+ 
