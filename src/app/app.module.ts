@@ -9,7 +9,6 @@ import { ComercioComponent } from './components/comercio/comercio/comercio.compo
 import { PeliculaComponent } from './components/cineApp/pelicula/pelicula.component';
 import { BoletoComponent } from './components/cineApp/boleto/boleto.component';
 import { ReservaComponent } from './components/cineApp/reserva/reserva.component'; 
-import { UserComponent } from './components/comercio/user/user.component'; 
 import { AuthComponent } from './components/comercio/auth/auth.component';
 import { DetalleComponent } from './components/publicacion/detalle/detalle.component'; 
 
@@ -20,7 +19,6 @@ import { DetalleComponent } from './components/publicacion/detalle/detalle.compo
     PeliculaComponent,
     BoletoComponent,
     ReservaComponent,
-    UserComponent,
     AuthComponent,
     DetalleComponent
   ],
