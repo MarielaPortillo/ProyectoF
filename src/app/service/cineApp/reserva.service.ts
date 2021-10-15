@@ -38,10 +38,10 @@ export class ReservaService {
     return this.http.post<reservas>(this.bs +'/nuevaReserva', reserva, httpOptions)
   }
     
-  updatePelicula(id: string | undefined, reserva: reservas): Observable<reservas>{
+  updateReserva(id: string | undefined, reserva: reservas): Observable<reservas>{
     return this.http.put<reservas>(this.bs + '/editarReserva/' + id, reserva)
   }
-  deletePelicula(id: string | undefined ): Observable<reservas>{
+  deleteReserva(id: string | undefined ): Observable<reservas>{
     console.log(id);
     return this.http.delete<reservas>(this.bs +'/deleteReserva/'+ id)
   }

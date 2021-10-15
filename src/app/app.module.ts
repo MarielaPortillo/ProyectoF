@@ -10,7 +10,8 @@ import { PeliculaComponent } from './components/cineApp/pelicula/pelicula.compon
 import { BoletoComponent } from './components/cineApp/boleto/boleto.component';
 import { ReservaComponent } from './components/cineApp/reserva/reserva.component'; 
 import { AuthComponent } from './components/comercio/auth/auth.component';
-import { DetalleComponent } from './components/publicacion/detalle/detalle.component'; 
+import { DetalleComponent } from './components/publicacion/detalle/detalle.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { DetalleComponent } from './components/publicacion/detalle/detalle.compo
     BoletoComponent,
     ReservaComponent,
     AuthComponent,
-    DetalleComponent
+    DetalleComponent,
   ],
   imports: [
     BrowserModule,
