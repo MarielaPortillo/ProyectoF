@@ -11,6 +11,9 @@ import { BoletoComponent } from './components/cineApp/boleto/boleto.component';
 import { ReservaComponent } from './components/cineApp/reserva/reserva.component'; 
 import { AuthComponent } from './components/comercio/auth/auth.component';
 import { DetalleComponent } from './components/publicacion/detalle/detalle.component';
+import { AuthGuard } from './confiInit/auth.guard';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokeninterceptorService } from './service/comercio/token-interceptor.service';
 
 
 @NgModule({
@@ -27,7 +30,15 @@ import { DetalleComponent } from './components/publicacion/detalle/detalle.compo
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokeninterceptorService,
+      multi: true
+    },
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

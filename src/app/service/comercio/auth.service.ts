@@ -34,10 +34,10 @@ export class AuthService {
   }
 
   rolAdmin() {
-    return !!localStorage.getItem('rol');
+    return localStorage.getItem('rol');
   }
   rolSupervisor() {
-    return !!localStorage.getItem('rol');
+    return localStorage.getItem('rol');
   }
 
   logout() {
