@@ -4,14 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { boletos } from '../../models/cineApp/boleto';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 
-    'Access-Control-Allow-Origin':'*',
-    'Authorization':'authkey',
-    'userid':'1'
-  })
-};
-
 
 
 @Injectable({
@@ -26,15 +18,15 @@ export class BoletoService {
   }
 
   getBoletos(): Observable<boletos[]>{
-    return this.http.get<boletos[]>(this.bs +'/listboletos', httpOptions);
+    return this.http.get<boletos[]>(this.bs +'/listboletos', );
   }
   
   getBoleto(id: string | undefined): Observable<boletos>{
-    return this.http.get<boletos>(this.bs +'/listboleto/' + id, httpOptions)
+    return this.http.get<boletos>(this.bs +'/listboleto/' + id, )
   }
 
   createBoletos(boleto: boletos): Observable<boletos>{
-    return this.http.post<boletos>(this.bs +'/create/boleto', boleto, httpOptions)
+    return this.http.post<boletos>(this.bs +'/create/boleto', boleto, )
   }
     
   updateBoletos(id: string | undefined, boleto: boletos): Observable<boletos>{

@@ -5,13 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { reservas } from '../../models/cineApp/reserva';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 
-    'Access-Control-Allow-Origin':'*',
-    'Authorization':'authkey',
-    'userid':'1'
-  })
-};
+
 
 @Injectable({
   providedIn: 'root'
@@ -26,16 +20,16 @@ export class ReservaService {
   }
 
   getReservas(): Observable<reservas[]>{
-    return this.http.get<reservas[]>(this.bs +'/listReserva', httpOptions);
+    return this.http.get<reservas[]>(this.bs +'/listReserva', );
   }
   
   getReserva(id: string | undefined): Observable<reservas>{
-    return this.http.get<reservas>(this.bs +'/UnaReserva/' + id, httpOptions)
+    return this.http.get<reservas>(this.bs +'/UnaReserva/' + id, )
   }
 
 
   createReserva(reserva: reservas): Observable<reservas>{
-    return this.http.post<reservas>(this.bs +'/nuevaReserva', reserva, httpOptions)
+    return this.http.post<reservas>(this.bs +'/nuevaReserva', reserva, )
   }
     
   updateReserva(id: string | undefined, reserva: reservas): Observable<reservas>{

@@ -15,23 +15,23 @@ export class UserService {
     private router: Router
     
   ) { }
-  listComercio(): Observable<User[]> {
+  listUser(): Observable<User[]> {
     return this.http.get<User[]>(this.URL + '/listadoUsuarios');
   }
-  getCategoria(): Observable<Rol[]>{
+  getRol(): Observable<Rol[]>{
     return this.http.get<Rol[]>(this.URL+'/listRole');
   };
-  oneComercio(id: String): Observable<User[]> {
+  oneUser(id: String): Observable<User[]> {
     return this.http.get<User[]>(this.URL + '/buscarUsuario/'+id);
   }
 
-  createComercio(comercio: User): Observable<User> {
-    return this.http.post<User>(this.URL + '/signup', comercio);
+  createUser(user: User): Observable<User> {
+    return this.http.post<User>(this.URL + '/signup', user);
   }
-  editComercio(comercio: User, id: String): Observable<User> {
-    return this.http.put<User>(this.URL + '/editarUsuario/'+id, comercio);
+  editUser(user: User, id: String): Observable<User> {
+    return this.http.put<User>(this.URL + '/editarUsuario/'+id, user);
   }
-  deleteComercio(id: string): Observable<User> {
+  deleteUser(id: string): Observable<User> {
     return this.http.delete<User>(this.URL + '/eliminarUsuario/'+id);
   }
 }

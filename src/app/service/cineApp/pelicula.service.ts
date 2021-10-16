@@ -5,14 +5,6 @@ import { Observable } from 'rxjs';
 import { peliculas } from '../../models/cineApp/pelicula';
 import { Injectable } from '@angular/core';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 
-    'Access-Control-Allow-Origin':'*',
-    'Authorization':'authkey',
-    'userid':'1'
-  })
-};
-
 
 
 
@@ -30,21 +22,21 @@ export class PeliculaService {
   }
 
   getPeliculas(): Observable<peliculas[]>{
-    return this.http.get<peliculas[]>(this.bs +'/listMovie', httpOptions);
+    return this.http.get<peliculas[]>(this.bs +'/listMovie', );
   }
   
   getPelicula(id: string | undefined): Observable<peliculas>{
-    return this.http.get<peliculas>(this.bs +'/oneMovie/' + id, httpOptions)
+    return this.http.get<peliculas>(this.bs +'/oneMovie/' + id, )
   }
 
   getPeliculaTitulo(): Observable<peliculas[]>{
-    return this.http.get<peliculas[]>(this.bs +'/searchMovie',httpOptions)
+    return this.http.get<peliculas[]>(this.bs +'/searchMovie',)
   }
 
 
 
   createPelicula(pelicula: peliculas): Observable<peliculas>{
-    return this.http.post<peliculas>(this.bs +'/newMovie', pelicula, httpOptions)
+    return this.http.post<peliculas>(this.bs +'/newMovie', pelicula,)
   }
     
   updatePelicula(id: string | undefined, pelicula: peliculas): Observable<peliculas>{
