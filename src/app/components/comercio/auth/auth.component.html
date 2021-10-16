@@ -1,1 +1,30 @@
-<p>auth works!</p>
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header ">
+                Iniciar Sesión
+            </div>
+            <div class="card-body">
+                <form [formGroup]="miFormulario" (ngSubmit)="signIn()">
+                    <div class="form-group ">
+                        <div class="col-6 mb-2">
+                            <label for="">Ingrese su email:</label>
+                            <input type="email" class="form-control" formControlName="email"
+                                placeholder="email@gmail.com" autofocus>
+                            <p *ngIf="!miFormulario.controls['email'].valid" class="text-danger">Ingrese el correo en un formato correcto!</p>
+                            <label for="">Ingrese su contraseña:</label>
+                            <input type="password" class="form-control" formControlName="password"
+                                placeholder="Password">
+                            <p *ngIf="!miFormulario.controls['password'].valid" class="text-danger">Ingrese la password no sea insolente!</p>
+                        </div>
+
+                        <button [disabled]="!miFormulario.valid" class="btn btn-success btn-block ">
+                            SignIn
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
