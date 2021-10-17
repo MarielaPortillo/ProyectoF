@@ -28,7 +28,7 @@ export class ComercioService {
   createComercio(comercio: Comercio): Observable<Comercio> {
     return this.http.post<Comercio>(this.URL + '/registrar', comercio);
   }
-  editComercio(comercio: Comercio, id: String): Observable<Comercio> {
+  editComercio( id: String,comercio: Comercio): Observable<Comercio> {
     return this.http.put<Comercio>(this.URL + '/editarComercio/'+id, comercio);
   }
   deleteComercio(id: string): Observable<Comercio> {

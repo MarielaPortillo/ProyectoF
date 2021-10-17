@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //import { CineAppComponent } from './models/cine-app/cine-app.component';
-import { ComercioComponent } from './components/comercio/comercio/comercio.component'; 
+import { ComercioListComponent } from './components/comercio/comercio/comercio-list/comercio-list.component'; 
 //import { RedSocialComponent } from './models/red-social/red-social.component';
 import { PeliculaComponent } from './components/cineApp/pelicula/pelicula.component';
 import { BoletoComponent } from './components/cineApp/boleto/boleto.component';
@@ -25,7 +25,7 @@ import { RolesGuard } from './confiInit/roles.guard';
 @NgModule({
   declarations: [
     AppComponent,
-    ComercioComponent,
+    ComercioListComponent,
     PeliculaComponent,
     BoletoComponent,
     ReservaComponent,
