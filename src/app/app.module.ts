@@ -12,8 +12,13 @@ import { ReservaComponent } from './components/cineApp/reserva/reserva.component
 import { AuthComponent } from './components/comercio/auth/auth.component';
 import { DetalleComponent } from './components/publicacion/detalle/detalle.component';
 import { AuthGuard } from './confiInit/auth.guard';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokeninterceptorService } from './service/comercio/token-interceptor.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MenuComponent } from './principal/menu/menu.component';
+import { FooterComponent } from './principal/footer/footer.component'
+import { CommonModule } from '@angular/common';
+import { UserlistComponent } from './components/comercio/user/userlist/userlist.component';
 
 
 @NgModule({
@@ -25,10 +30,17 @@ import { TokeninterceptorService } from './service/comercio/token-interceptor.se
     ReservaComponent,
     AuthComponent,
     DetalleComponent,
+    MenuComponent,
+    FooterComponent,
+    UserlistComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [
     AuthGuard,

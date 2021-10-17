@@ -1,1 +1,28 @@
-<p>userlist works!</p>
+<div class="container">
+    <div class="row">
+        <h1>Users List</h1>
+    </div>
+</div>
+
+<div class="container form-all">
+  <div class="row">
+    <ng-container *ngFor="let u of users">
+    <div class="col-3 card-movie">
+        <div class="card">
+          <img [src]="" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Nombre de Usuario: {{u.username}}</h5>
+            <p class="details-movie">Email: {{u.email}}</p>
+          </div>
+      
+          <button class="btn btn-primary btn-edit" >
+            Update
+          </button>
+          <button class="btn btn-danger btn-delete" >
+            Delete
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

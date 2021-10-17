@@ -46,7 +46,7 @@ export class AuthComponent implements OnInit {
           localStorage.setItem('token', res.token);
           localStorage.setItem('rol', res.rol);
           localStorage.setItem('expira', res.expira);
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/publicacion']);
         },
         err => console.log(err)
       )

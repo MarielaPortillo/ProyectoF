@@ -35,7 +35,7 @@ export class PeliculaComponent implements OnInit {
 
   editar(id: string | undefined){
     
-    this.peliculaService.getPelicula(id)
+    this.peliculaService.updatePelicula(id, this.pelicula)
         .subscribe(
           response=>{
               
