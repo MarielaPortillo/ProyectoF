@@ -12,20 +12,26 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private authService: AuthService
-  ){}
+  ) { }
 
   ngOnInit(): void {
-    
-  }
-  
-login() {
 
-  if (this.authService.loggedIn() === true) {
-    return true; 
   }
-}
-logout() {
-  this.authService.logout()
-}
+
+  login() {
+
+    if (this.authService.loggedIn() === true) {
+      return true;
+    }
+  }
+  roles() {
+
+    if (this.authService.rolAdmin() === true) {
+      return true;
+    }
+  }
+  logout() {
+    this.authService.logout()
+  }
 
 }

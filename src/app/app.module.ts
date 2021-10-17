@@ -19,6 +19,7 @@ import { MenuComponent } from './principal/menu/menu.component';
 import { FooterComponent } from './principal/footer/footer.component'
 import { CommonModule } from '@angular/common';
 import { UserlistComponent } from './components/comercio/user/userlist/userlist.component';
+import { RolesGuard } from './confiInit/roles.guard';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import { UserlistComponent } from './components/comercio/user/userlist/userlist.
       useClass: TokeninterceptorService,
       multi: true
     },
-    
+    RolesGuard,
   ],
   bootstrap: [AppComponent]
 })

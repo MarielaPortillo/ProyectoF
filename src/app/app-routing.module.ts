@@ -19,6 +19,7 @@ import { UserlistComponent } from './components/comercio/user/userlist/userlist.
 const routes: Routes = [
   { path: '', redirectTo: '/signin', pathMatch: 'full' },
   { path: 'signin', component: AuthComponent},
+  //{ path: 'publicacion', component: AuthComponent},
   {path:"list-users",component:UserlistComponent, canActivate:[AuthGuard]},
   {path:"add-pelicula",component:AddpeliculaComponent, canActivate:[AuthGuard, RolesGuard]},
   {path:"all-peliculas",component:PeliculaComponent, canActivate:[AuthGuard,]},
