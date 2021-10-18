@@ -1,1 +1,64 @@
-<p>reserva works!</p>
+
+
+<div class="container">
+    <div class="row">
+        <label for="">Buscar Reserva ID</label>
+        <input type="text" class="form-control"  formControlName="NVenta">
+        <button onclick="getUnaReserva()" class="btn btn-primary btn-save">Buscar</button>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <h1>Add Nueva Reserva cineapp+</h1>
+    </div>
+</div>
+
+
+<div class="container form-add">
+    <form formGroup]="miFormulario" (ngSubmit)="edit ? updateReservas() : submitReservas()">
+        <div class="row">
+            <div class="col-6">
+
+
+                <label for="">NVenta:</label>
+                <input type="text" class="form-control"  formControlName="NVenta" placeholder="1, 2, 3">
+                <p *ngIf="!miFormulario.controls['NVenta'].valid" class="text-danger">NVenta debe tener un valor</p>
+
+
+                <label for="">Pelicula:</label>
+                <select class="form-control select-option"  name="pelicula" *ngFor="let p of pelicula" >
+                    <option [(ngModel)]="p._id" >
+                        {{p.titulo}}
+                    </option>
+                </select>
+                <p *ngIf="!miFormulario.controls['pelicula'].valid" class="text-danger">Escoja la pelicula del boleto</p>
+
+               
+                <label for="">Cantidad:</label>
+                <input type="text" class="form-control"  formControlName="cantidad" placeholder="1, 2, 3">
+                <p *ngIf="!miFormulario.controls['cantidad'].valid" class="text-danger">La cantidad debe contener un valor</p>
+               
+                <label for="">Total:</label>
+                <input type="text" class="form-control"  formControlName="total" placeholder="$2.40, $3.00">
+                <p *ngIf="!miFormulario.controls['total'].valid" class="text-danger">Total debe contener un valor</p>
+               
+
+                <label for="">Fecha Reserva:</label>
+                <input type="date" class="form-control"  formControlName="fechaReser" placeholder="28/08/2021">
+                <p *ngIf="!miFormulario.controls['fechaReser'].valid" class="text-danger">Escriba la fecha</p>
+               
+          
+            </div>
+
+            <div class="col-6">
+                
+               
+            </div>
+            
+            <button [disabled]="!miFormulario.valid" class="btn btn-primary btn-save">Guardar Boleto</button>
+        
+        </div>
+    </form>
+</div>

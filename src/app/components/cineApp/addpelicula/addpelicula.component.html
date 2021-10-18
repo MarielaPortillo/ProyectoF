@@ -1,1 +1,56 @@
-<p>addpelicula works!</p>
+<div class="container">
+    <div class="row">
+        <h1>Agregar nueva Pelicula a cineapp+</h1>
+    </div>
+</div>
+
+
+<div class="container form-add">
+    <form formGroup]="miFormulario" (ngSubmit)="edit ? updatePelicula() : submitPeliculas()">
+        <div class="row">
+            <div class="col-6">
+                <label for="">Titulo:</label>
+                <input type="text" formControlName="titulo" class="form-control" placeholder="Nombre de la pelicula" >
+                <p *ngIf="!miFormulario.controls['titulo'].valid" class="text-danger">El titulo debe de tener al menos 2 caracteres</p> 
+    
+                <label for="">Clasificación:</label>
+                <input type="text" class="form-control"  formControlName="clasificacion" placeholder="A, B ó C">
+                <p *ngIf="!miFormulario.controls['clasificacion'].valid" class="text-danger">El clasificación solo debe tener 1 letras</p>
+
+                <label for="">Genero:</label>
+                <input type="text" class="form-control"  formControlName="genero" placeholder="Acción, comedia, teror">
+                <p *ngIf="!miFormulario.controls['genero'].valid" class="text-danger">El genero de la pelicula debe contener al menos 4 caracteres</p>
+                <label for="">Estatus:</label> 
+                
+                <select class="form-control select-option"  formControlName="estatus">
+                    <option value="activo" >Activo</option>
+                    <option value="inactivo">Inactivo</option>
+
+                </select>
+                <p *ngIf="!miFormulario.controls['estatus'].valid" class="text-danger">Seleccione el estado de la pelicula</p>
+            </div>
+
+            <div class="col-6">
+                <label for="">Duración:</label>
+                <input type="text" class="form-control"  formControlName="duracion" placeholder="Duracion de la pelicula">
+                <p *ngIf="!miFormulario.controls['duracion'].valid" class="text-danger">La duración debe ser en minutos</p>
+
+                <label for="">Portada:</label>
+                <input type="text" class="form-control"  formControlName="imagem" placeholder="Url de la portada">
+                <p *ngIf="!miFormulario.controls['imagen'].valid" class="text-danger">Ingrese la url de la imagen</p>
+                <label for="">Fecha de estreno:</label>
+                <input type="date" class="form-control"  formControlName="fechaEstreno" placeholder="28/08/2021">
+                <p *ngIf="!miFormulario.controls['fechaEstreno'].valid" class="text-danger">Escriba la fecha de estreño</p>
+               
+                <label for="">PrecioBoleto:</label>
+                <input type="text" formControlName="precioBoleto" class="form-control" placeholder="Precio Boleto" >
+                <p *ngIf="!miFormulario.controls['precioBoleto'].valid" class="text-danger">El Precio debe contener valor</p> 
+
+               
+            </div>
+            
+            <button [disabled]="!miFormulario.valid" class="btn btn-primary btn-save">Save Movie</button>
+        
+        </div>
+    </form>
+</div>

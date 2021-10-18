@@ -15,6 +15,8 @@ import { HttpClient } from '@angular/common/http';
 export class ReservaComponent implements OnInit {
 
   pelicula: peliculas[] = [];
+  Reserva: reservas[]=[];
+  reser:any;
 
   reserva: reservas = {
     NVenta: '',
@@ -23,6 +25,10 @@ export class ReservaComponent implements OnInit {
     total: '',
     fechaReser: '',
   };
+  
+
+
+
   edit: boolean = false;
   mensage = "Agregar reserva";
 
@@ -61,6 +67,22 @@ export class ReservaComponent implements OnInit {
       err => console.log(err),
     )
   }
+
+  getUnaReserva(id: string | undefined){
+    this.reservaService.getReserva(id)
+    .subscribe(
+      (res :reservas) => {
+        console.log(res);
+        this.reser = res ;
+      },
+      err => console.log(err),
+    )
+  }
+
+
+
+
+
 
 
   submitReservas(){

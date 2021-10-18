@@ -13,6 +13,7 @@ import { AuthComponent } from './components/comercio/auth/auth.component';
 import { DetalleComponent } from './components/publicacion/detalle/detalle.component';
 import { AuthGuard } from './confiInit/auth.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TokeninterceptorService } from './service/comercio/token-interceptor.service';
 
 
@@ -28,7 +29,9 @@ import { TokeninterceptorService } from './service/comercio/token-interceptor.se
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     AuthGuard,

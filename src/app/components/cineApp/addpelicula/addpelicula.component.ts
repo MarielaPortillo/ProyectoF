@@ -3,8 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import {peliculas} from '../../../models/cineApp/pelicula';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PeliculaService } from '../../../service/cineApp/pelicula.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 
 
@@ -15,6 +16,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   providers: [PeliculaService]
 })
 export class AddpeliculaComponent implements OnInit {
+
+  miFormulario: FormGroup;
+
 
   //detalle: detalles[] = [];
   
@@ -33,7 +37,7 @@ export class AddpeliculaComponent implements OnInit {
   mensage = "Agregar pelicula";
 
   id: string | null | undefined;
-  miFormulario!: FormGroup;
+  
 
 
 
@@ -81,7 +85,7 @@ export class AddpeliculaComponent implements OnInit {
   }
 
 
-  submitMovies(){
+  submitPeliculas(){
     this.peliculaService.createPelicula(this.miFormulario.value)
     .subscribe(
       res => {

@@ -1,1 +1,28 @@
-<p>pelicula works!</p>
+<div class="container">
+    <button class="btn btn-primary btn-add"  [routerLink]="['add-pelicula'] " ></button>
+    <div class="row">
+        <h1>CineApp</h1>
+        
+    </div>
+</div>
+
+<div class="container form-all">
+  <div class="row">
+    <div class="col-3 card-movie" *ngFor="let p of peliculas">
+      <div class="card">
+        <img [src]="p.imagen" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{p.titulo}}</h5>
+          <p class="details-movie">Duración: {{p.duracion}} min.</p>
+          <p class="details-movie">Género: {{p.genero}}.</p>
+        </div>
+        <button class="btn btn-primary btn-edit" (click)="editar(peli.id)" [routerLink]="['/','editpelicula', p._id]" >
+          Update
+        </button>
+        <button class="btn btn-danger btn-delete" (click)="deletePelicula(p._id)">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

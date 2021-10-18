@@ -33,8 +33,6 @@ export class PeliculaService {
     return this.http.get<peliculas[]>(this.bs +'/searchMovie',)
   }
 
-
-
   createPelicula(pelicula: peliculas): Observable<peliculas>{
     return this.http.post<peliculas>(this.bs +'/newMovie', pelicula,)
   }
