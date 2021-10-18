@@ -1,15 +1,15 @@
 
 
 export interface Comercio {
-    _id?: string;
-    nombreComercio: String;
-    propietario: String;
-    latitud: String;
-    longitud: String;
-    telefono: String;
-    redes_sociales: String;
-    categoria: String,
-    logo: String;
+    _id?: string | undefined;
+    nombreComercio: string;
+    propietario: string;
+    lng: number;
+    lat: number;
+    telefono: string;
+    redes_sociales: string;
+    categoria: string,
+    logo: string;
     
-    descripcion: String
+    descripcion: string
 }

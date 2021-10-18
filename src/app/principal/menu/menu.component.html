@@ -6,11 +6,20 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" routerLinkActive="active"
-                [routerLink]="['/dashboard']">Peliculas</a>
-            </li>
-
+            <ng-container *ngIf="!roles(); else rolesIn">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" routerLinkActive="active">Peliculas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" routerLinkActive="active">Comercios</a>
+              </li>
+            </ng-container>
+            <ng-template #rolesIn>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" routerLinkActive="active"
+                  [routerLink]="['/publicacion']">Publicacion</a>
+              </li>
+            </ng-template>
           </ul>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <ng-container *ngIf="!login(); else loggedIn">
@@ -24,7 +33,7 @@
             </ng-container>
             <ng-template #loggedIn>
               <li class="nav-item">
-                <a class="nav-link" (click)="logout()">Logout</a>
+                <a class="nav-link" style="cursor: pointer;" (click)="logout()">Logout</a>
               </li>
             </ng-template>
           </ul>

@@ -11,7 +11,7 @@ export class RolesGuard implements CanActivate {
     private router: Router
   ){}
   canActivate(): boolean {
-    if ((this.authService.rolAdmin() === 'admin')) {
+    if ((this.authService.rolAdmin() === true)) {
       return true;
     }
     this.router.navigate(['/publicacion']);

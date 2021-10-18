@@ -8,6 +8,8 @@ import { ReservaComponent } from './components/cineApp/reserva/reserva.component
 import { AuthComponent } from './components/comercio/auth/auth.component';
 import { DashboardComponent } from './principal/dashboard/dashboard.component';
 import { RolesGuard } from './confiInit/roles.guard';
+import { UserlistComponent } from './components/comercio/user/userlist/userlist.component';
+import { ComercioListComponent } from './components/comercio/comercio/comercio-list/comercio-list.component';
 
 /**
  * ---------------------------OJO-----------------------------------------------
@@ -18,6 +20,9 @@ import { RolesGuard } from './confiInit/roles.guard';
 const routes: Routes = [
   { path: '', redirectTo: '/signin', pathMatch: 'full' },
   { path: 'signin', component: AuthComponent},
+  //{ path: 'publicacion', component: AuthComponent},
+  {path:"list-users",component:UserlistComponent, canActivate:[AuthGuard]},
+  {path:"list-comercios",component:ComercioListComponent, canActivate:[AuthGuard]},
   {path:"add-pelicula",component:AddpeliculaComponent, canActivate:[AuthGuard, RolesGuard]},
   {path:"all-peliculas",component:PeliculaComponent, canActivate:[AuthGuard,]},
   {path:"editpelicula/:id", component: AddpeliculaComponent, canActivate:[AuthGuard]},

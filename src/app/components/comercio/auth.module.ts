@@ -7,6 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { ComercioListComponent } from './comercio/comercio-list/comercio-list.component';
+import { ComercioAddComponent } from './comercio/comercio-add/comercio-add.component';
+import { ComercioEditComponent } from './comercio/comercio-edit/comercio-edit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 NgxPermissionsModule.forRoot()
 
 
@@ -14,13 +18,17 @@ NgxPermissionsModule.forRoot()
   declarations: [
     RegisterComponent,
     UserlistComponent,
-    EditUserComponent
+    EditUserComponent,
+    ComercioListComponent,
+    ComercioAddComponent,
+    ComercioEditComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     AuthRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ]
 })
 export class AuthModule { }

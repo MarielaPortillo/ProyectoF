@@ -30,11 +30,12 @@ export class AuthService {
   }
 
   loggedIn() {
+    
     return !!localStorage.getItem('token');
   }
 
   rolAdmin() {
-    return localStorage.getItem('rol');
+    return !!localStorage.getItem('rol')
   }
   rolSupervisor() {
     return localStorage.getItem('rol');
