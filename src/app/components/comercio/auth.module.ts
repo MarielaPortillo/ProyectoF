@@ -10,6 +10,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { ComercioListComponent } from './comercio/comercio-list/comercio-list.component';
 import { ComercioAddComponent } from './comercio/comercio-add/comercio-add.component';
 import { ComercioEditComponent } from './comercio/comercio-edit/comercio-edit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 NgxPermissionsModule.forRoot()
 
 
@@ -26,7 +27,8 @@ NgxPermissionsModule.forRoot()
     CommonModule,
     FormsModule,
     AuthRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ]
 })
 export class AuthModule { }

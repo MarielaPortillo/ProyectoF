@@ -28,15 +28,14 @@ export class ComercioListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getComercios();
-   
     (Mapboxgl as any).accessToken = environment.tokenmapa;
     this.mapa = new Mapboxgl.Map({
       container: 'contenedormapa',
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-88.94, 14.04],
-      zoom: 16.6
+      center: [-88.93, 14.04],
+      zoom: 10
     });
+    this.getComercios();
 
     this.route.paramMap.subscribe((paramMap: any) => {
       const { params } = paramMap
@@ -48,16 +47,7 @@ export class ComercioListComponent implements OnInit {
 
 
 
-  getComercios() {
-    this.comercioService.listComercio()
-      .subscribe(
-        (res: Comercio[]) => {
-          console.log(JSON.stringify(res));
-          this.comercios = res;
-        },
-        err => console.log(err),
-      )
-  }
+
 
   deletePelicula(id: string) {
 
@@ -69,41 +59,45 @@ export class ComercioListComponent implements OnInit {
         err => console.log(err)
       )
   }
-  abrir = () => {
-    console.log("Se abrió el popup del comercio: " + this.comercio.nombreComercio)
+  abrir = (comerci: Comercio) => {
+    console.log("Se abrió el popup del comercio: " + comerci.nombreComercio)
   }
 
-  cerrar = () => {
-    console.log("Se cerró el popup del comercio: " + this.comercio.nombreComercio)
+  cerrar = (comerci: Comercio) => {
+    console.log("Se cerró el popup del comercio: " + comerci.nombreComercio)
   }
 
 
-  marcador() {
+  marcador(comerci: Comercio) {
 
+    const globo = new Mapboxgl.Popup({ className: 'globito' })
+      .setHTML(`<p> ${comerci.nombreComercio} </p>`)
+      .on('open', () => { this.abrir(comerci) })
+      .on('close', () => { this.cerrar(comerci) })
+    const marca = new Mapboxgl.Marker({
+      draggable: true,
+      color: "orange"
+    })
+      .setLngLat([comerci.lng, comerci.lat])
+      .setPopup(globo)
+      .addTo(this.mapa);
+
+    marca.on('dragend',()=>{ console.log(marca.getLngLat()) });
+
+  }
+  getComercios() {
     this.comercioService.listComercio()
       .subscribe(
         (res: Comercio[]) => {
           console.log(res);
           this.comercios = res;
-          const globo = new Mapboxgl.Popup({ className: 'globito' })
-            .setHTML(`<p> ${this.comercio.nombreComercio} </p>`)
-            .on('open', () => { this.abrir() })
-            .on('close', () => { this.cerrar() })
-          const marca = new Mapboxgl.Marker({
-            draggable: true,
-            color: "orange"
+          this, this.comercios.forEach(co => {
+            this.marcador(co);
           })
-            .setLngLat([this.comercio.lng, this.comercio.lat])
-            .setPopup(globo)
-            .addTo(this.mapa);
-
-          marca.on('dragend', () => { console.log(marca.getLngLat()) });
         },
         err => console.log(err),
       )
-
   }
-
 
 
 }
