@@ -1,5 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("~bootstrap/dist/css/bootstrap.css");
+/*
+$font: 'Montserrat', sans-serif
+$color-purple: #282220
+$color-light: #cfdfff
+$color-blue: #D43B26
+$color-blue2: #BE321F
+$color-white: #fff
+$text-big: 25px
+$text-medium: 20px
+$text-small: 16px
+*/
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+    
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}   
+
 #contenedormapa{
     width: 500px;
     height: 500px;
@@ -9,3 +31,346 @@
     width: 125px;
     background-color: aqua;
 }
+
+.menu {
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+
+h1 {
+    font-size: 25px;
+    padding: 10px;
+    text-align: center;
+}   
+
+li {
+    list-style: none;
+}   
+
+.container-menu a {
+    font-weight: 600;
+}   
+    
+.settings {
+    padding: 10px 25px;
+    background-color: #D43B26;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+}   
+
+.settings:hover {
+    background: #BE321F;
+    color: #fff;
+}
+
+.sesion {
+    color: #D43B26;
+    cursor: pointer;
+}
+
+.sesion:hover {
+    color: #BE321F;
+}
+
+.container-add {
+    padding-bottom: 50px;
+}    
+
+.btn-add {
+    width: 350px;
+    display: block;
+    margin: auto;
+    padding: 15px 35px;
+    background-color: #D43B26 !important;
+    text-align: center;
+    font-weight: 700;
+    border: 0 !important;
+}  
+
+.btn-add:hover {
+    background-color: #282220 !important;
+    color: #fff;
+}   
+
+.btn-add a {
+    text-decoration: none;
+    color: #fff;
+}   
+
+.btn-save {
+    width: 250px;
+    display: block;
+    margin: 40px auto 0;
+    padding: 10px 20px;
+    background-color: #BE321F !important;
+    color: #fff;
+}   
+
+.btn-save:hover {
+    background-color: #D43B26;
+}
+
+.btn-cancelar {
+    display: block;
+    margin: 40px auto 0;
+    padding: 10px 20px;
+    color: #282220;
+}
+
+.btn-cancelar:hover {
+    color: #000;
+}
+
+.btn-edit {
+    background-color: #D43B26;
+    margin: 0 10px 0;
+}   
+
+.btn-edit:hover {
+    background-color: #282220;
+    color: #fff;
+}  
+
+.btn-delete {
+    margin: 10px 10px 10px;
+}
+
+.btn-buscar {
+    background-color: #D43B26;
+    color: #fff;
+    padding: 0 5px 0;
+    font-weight: 500;
+    margin-left: -14px;
+}
+
+.btn-buscar:hover {
+    color: #fff;
+}
+
+.buscar {
+    border: 2px solid #D43B26 !important;
+    font-size: 14px;
+}
+
+.card-title {
+    text-align: center;
+}  
+
+.details-movie {
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: -5px;
+}   
+
+.welcome-text {
+    text-align: center;
+    font-size: 45px;
+    font-weight: 700;
+    color: #fff;
+    margin: auto;
+}  
+
+.card-img-top {
+    height: 380px;
+    margin: auto;
+}   
+
+.card-movie {
+    margin: 20px auto 20px;
+}
+
+.form-all {
+    width: 75%;
+    padding: 10px 0 50px;
+}  
+
+.form-add {
+    padding: 50px;
+}   
+
+.form-add form label {
+    margin-top: 15px;
+}  
+
+.form-add form input {
+    border-radius: 5px;
+}
+
+::placeholder {
+    font-size: 12px;
+}   
+
+.text-danger {
+    margin: auto;
+    font-size: 12px !important;
+    font-style: italic;
+}
+
+.container-login {
+    height: 80%;
+}   
+
+.info-login {
+    background-color: #D43B26;
+    color: #fff;
+} 
+
+.img-mockup {
+    width: 80%;
+    position: static;
+    margin-top: -100px;
+    margin-left: 200px;
+}   
+
+.login-main-text {
+    display: block;
+    margin: auto;
+    padding: 50px;
+    color: #fff;
+}  
+
+.login-main-text h2 {
+    font-weight: 700;
+}  
+
+.login-main-text h4 {
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: -10px;
+} 
+
+.login-main-text p {
+    margin-top: 30px;
+}
+
+.form_container {
+    display: block;
+    margin-top: 120px;
+}  
+
+.form_container h3 {
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.form_registre {
+    display: block;
+    margin-top: 80px;
+}
+
+.form_registre h3 {
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.login_btn {
+    width: 100%;
+    background: #D43B26 !important;
+    color: #fff !important;
+    font-size: 15px;
+}  
+
+.login_btn:hover {
+    background: #BE321F !important;
+}   
+
+.login_btn:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}  
+		
+.login_container {
+    padding: 0 2rem;
+}   
+		
+.input-group-text {
+    height: 38px;
+    background: #D43B26 !important;
+    color: #fff !important;
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+}  
+		
+.input_user, input_pass:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}   
+		
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #282220 !important;
+}    
+
+.custom-control-label {
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+.enlaces {
+    color: #BE321F;
+    margin: 0 5px 0;
+    font-size: 14px;
+    font-weight: 600 !important;
+}    
+
+.enlaces:hover {
+    color: #282220;
+}   
+
+.cuenta {
+    font-size: 14px;
+    margin-bottom: -5px;
+}
+
+.container-comercio {
+    text-align: center;
+}
+
+.container-comercio h3 {
+    font-weight: 600;
+}
+
+.mapa {
+    margin: 25px 5px;
+    border: 2px #BE321F solid;
+}
+
+.footer {
+    background-color: #282220;
+    padding: 35px;
+    position: relative;
+}  
+
+.footer p {
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 10px;
+    margin-bottom: -10px;
+}  
+
+.footer hr {
+    color: #fff;
+}   
+
+.rs {
+    display: block;
+    margin: 0 0 10px 0;
+    text-align: center;
+}    
+
+.rs i {
+    font-size: 24px;
+    color: #cfdfff;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+}  
+
+.rs i:hover {
+    color: #fff;
+}
+    

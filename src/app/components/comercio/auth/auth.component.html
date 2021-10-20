@@ -1,30 +1,50 @@
-<div class="row">
-    <div class="col-md-4 mx-auto">
-        <div class="card">
-            <div class="card-header ">
-                Iniciar Sesión
-            </div>
-            <div class="card-body">
-                <form (ngSubmit)="signIn()">
-                    <div class="form-group ">
-                        <div class="col-6 mb-2">
-                            <label for="">Ingrese su email:</label>
-                            <input type="email" class="form-control" formControlName="email"
-                                placeholder="email@gmail.com" autofocus>
-                            <p *ngIf="!miFormulario.controls['email'].valid" class="text-danger">Ingrese el correo en un formato correcto!</p>
-                            <label for="">Ingrese su contraseña:</label>
-                            <input type="password" class="form-control" formControlName="password"
-                                placeholder="Password">
-                            <p *ngIf="!miFormulario.controls['password'].valid" class="text-danger">Ingrese la password no sea insolente!</p>
-                        </div>
-
-                        <button [disabled]="!miFormulario.valid" class="btn btn-success btn-block ">
-                            SignIn
-                        </button>
-                    </div>
-
-                </form>
-            </div>
-        </div>
+<div class="container-fliud container-login">
+    <div class="row">
+       <div class="col-6">
+          <div class="sidenav info-login">
+             <div class="login-main-text">
+                <h2>Comercios App</h2>
+                <h4>¡Los mejores comercios a un solo click!</h4>
+                <p>Bienvenido al sistema de comercios. Aca encontrarás información y valoraciones de los comercios más importantes de todo El Salvador.</p>
+             </div>
+             <div>
+                <img src="./assets/mano-mockup.png" alt="mockup" class="img-mockup">
+             </div>
+          </div>
+       </div>
+       <div class="col-6">
+          <div class="d-flex justify-content-center form_container">
+             <form [formGroup]="miFormulario" (ngSubmit)="signIn()">
+                <h3>Inicia sesión</h3>
+                <div class="input-group mb-4">
+                   <div class="input-group-append">
+                      <span class="input-group-text"><i class="fas fa-user"></i></span>
+                   </div>
+                   <input class="form-control input_user" type="email" formControlName="email" placeholder="usuario">
+                   <p *ngIf="!miFormulario.controls['email'].valid" class="text-danger">Ingrese el correo en un formato correcto.</p>
+                </div>
+                <div class="input-group mb-2">
+                   <div class="input-group-append">
+                      <span class="input-group-text"><i class="fas fa-key"></i></span>
+                   </div>
+                   <input type="password" class="form-control input_pass" formControlName="password" placeholder="••••••••••">
+                   <p *ngIf="!miFormulario.controls['password'].valid" class="text-danger">Ingresa tu contraseña.</p>
+                </div>
+                   <div class="d-flex justify-content-center mt-3 login_container">
+                    <button [disabled]="!miFormulario.valid" class="btn btn-success login_btn">INGRESAR</button>
+             </div>
+             </form>
+          </div>
+    
+          <div class="mt-4">
+             <div class="d-flex justify-content-center">
+                <p class="cuenta">¿No tienes una cuenta?</p>
+                <a href="#" class="enlaces" [routerLink]="['/signup']">Crear cuenta</a>
+             </div>
+             <div class="d-flex justify-content-center links">
+                <a href="#" class="enlaces">¿Olvidaste tu contraseña?</a>
+             </div>
+          </div>
+       </div>
     </div>
-</div>
+ </div>

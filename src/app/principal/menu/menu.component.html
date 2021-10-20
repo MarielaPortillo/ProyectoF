@@ -1,48 +1,53 @@
 <header>
-  <div class="container container-menu">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" [routerLink]="['/dashboard']"><img src="" alt="" width="200px"></a>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <ng-container *ngIf="!roles(); else rolesIn">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" routerLinkActive="active"
-                  [routerLink]="['/publicacion']">Publicacion</a>
-              </li>
-              
-            </ng-container>
-            <ng-template #rolesIn>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/all-peliculas']">Peliculas</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/list-comercios']">Comercios</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/list-users']">Usuarios</a>
-              </li>
-            </ng-template>
-          </ul>
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <ng-container *ngIf="!login(); else loggedIn">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/signin']">INICIAR
-                  SESION</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" [routerLink]="['/add-user']">REGISTRARSE</a>
-              </li>
-            </ng-container>
-            <ng-template #loggedIn>
-              <li class="nav-item">
-                <a class="nav-link" style="cursor: pointer;" (click)="logout()">Logout</a>
-              </li>
-            </ng-template>
-          </ul>
+  <div class="container container-menu menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" [routerLink]="['/dashboard']"><img src="./assets/comerciosapp-logo.png" alt="logotipo-comerciosapp" width="200px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <ng-container *ngIf="!roles(); else rolesIn">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/list-comercios']">COMERCIOS</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/all-movies']">PELÍCULAS</a>
+                </li>
+              </ng-container>
+              <ng-template #rolesIn>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" routerLinkActive="active"
+                    [routerLink]="['/publicacion']">PUBLICACIÓN</a>
+                </li>
+              </ng-template>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-  </div>
+
+        <div class="collapse navbar-collapse search">
+          <form class="d-flex">
+            <input class="form-control me-2 buscar" type="search" placeholder="Buscar" aria-label="Buscar">
+              <button class="btn btn-buscar" type="submit">Buscar</button>
+          </form>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ng-container *ngIf="!login(); else loggedIn">
+            <li class="nav-item">
+              <a class="nav-link sesion" aria-current="page" routerLinkActive="active" [routerLink]="['/signin']">INGRESAR</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link settings" routerLinkActive="active" [routerLink]="['/createUser']">REGISTRARSE</a>
+            </li>
+          </ng-container>
+          <ng-template #loggedIn>
+            <li class="nav-item">
+              <a class="nav-link sesion" (click)="logout()">SALIR</a>
+            </li>
+          </ng-template>
+        </div>
+      </nav>
+    </div>     
 </header>
