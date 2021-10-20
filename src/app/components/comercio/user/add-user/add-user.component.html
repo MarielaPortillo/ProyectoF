@@ -12,7 +12,7 @@
                 Iniciar Sesión
             </div>
             <div class="card-body">
-                <form [formGroup]="miFormulario" (ngSubmit)="edit ? updateUsers(user._id) : submitUsers()">
+                <form [formGroup]="miFormulario" (ngSubmit)="submitUsers()">
                     <div class="form-group ">
                         <div class="col-6 mb-2">
                             <label for="">Ingrese su usuario:</label>
@@ -28,10 +28,10 @@
                                 placeholder="Password">
                             <p *ngIf="!miFormulario.controls['password'].valid" class="text-danger">Ingrese la password no sea insolente!</p>
                             <label for="">Seleccione el rol:</label>
-                            <select class="form-control select-option" id="rol" formControlName="rol">
-                                <option *ngFor="let r of roles" [ngValue]="r.name" >{{r.name}}</option>
+                            <select class="form-control select-option" formControlName="rol">
+                                <option value="user">user</option>
                             </select>
-                            <p *ngIf="!miFormulario.controls['rol'].value" class="text-danger">Seleccione un rol</p>
+                            
                             
                             <!--<select class="form-control select-option" id="rol" formControlName="rol">
                                 <option value="admin">admin</option>
@@ -55,9 +55,6 @@
                         <button [disabled]="!miFormulario.valid" class="btn btn-primary btn-save">
                             REGISTRARSE
                         </button>
-                        <button class="btn btn-danger" [routerLink]="['/list-users']" >
-                            CANCELAR
-                          </button>
                     </div>
 
                 </form>
@@ -65,17 +62,3 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    function ShowSelected()
-    {
-    /* Para obtener el valor */
-    var cod = document.getElementById("rol").value;
-    alert(cod);
-    
-    /* Para obtener el texto */
-    var combo = document.getElementById("rol");
-    var selected = combo.options[combo.selectedIndex].text;
-    alert(selected);
-    }
-    </script>

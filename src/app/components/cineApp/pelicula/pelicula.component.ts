@@ -38,10 +38,7 @@ export class PeliculaComponent implements OnInit {
     this.peliculaService.updatePelicula(id, this.pelicula)
         .subscribe(
           response=>{
-              
             this.pelicula=response;
-            
-
           });
         
    

@@ -1,1 +1,28 @@
-<p>edit-user works!</p>
+<div class="container">
+    <div class="row">
+        <h1>Add new movie to cineapp+</h1>
+    </div>
+</div>
+
+<div class="container form-add">
+    <form (ngSubmit)="updateUser()">
+        <div class="row">
+            <div class="col-6">
+                <label for="">Titulo:</label>
+                <input type="text" name="username" [(ngModel)]="user.username" class="form-control" placeholder="Nombre de la pelicula" >
+                 
+                <label for="">email:</label>
+                <input type="email" class="form-control" [(ngModel)]="user.email" name="clasificacion" placeholder="A, B ó C">
+                
+                <select class="form-control select-option"  name="rol">
+                    <option [ngValue]="user.rol" [(ngModel)]="user.rol" >{{user.rol}}</option>
+
+                </select>
+                
+            </div>
+            <button  class="btn btn-primary btn-save">Save Changes</button>
+        
+        </div>
+    </form>
+</div>
+

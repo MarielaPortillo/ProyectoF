@@ -4,18 +4,18 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Rol } from 'src/app/models/comercio/rol';
 import { users } from 'src/app/models/comercio/usuario';
-import { AuthService } from 'src/app/service/comercio/auth.service';
 import { UserService } from 'src/app/service/comercio/user.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-add-user',
+  templateUrl: './add-user.component.html',
+  styleUrls: ['./add-user.component.css'],
+  providers: [UserService]
 })
-export class RegisterComponent implements OnInit {
+export class AddUserComponent implements OnInit {
 
   roles: Rol[]= [];
-  users: users[]= [];
+  
   user: users = {
     username: '',
     email: '',
@@ -67,6 +67,18 @@ export class RegisterComponent implements OnInit {
       )
     }
   }
+
+  updateUser(id: string){
+  
+    this.userServices.editUser(id, this.miFormulario.value)
+    .subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/all-peliculas'])
+      },
+      err => console.log(err)
+    )
+  }
   getRol(){
     this.userServices.getRol()
     .subscribe(
@@ -79,21 +91,11 @@ export class RegisterComponent implements OnInit {
   }
   submitUsers(){
     console.log(this.miFormulario.value);
-    this.userServices.createUser(this.miFormulario.value)
+    this.userServices.addUser(this.miFormulario.value)
     .subscribe(
       res => {
         console.log(res);
-        this.router.navigate(['/list-users']);
-      },
-      err => console.log(err)
-    )
-  }
-  updateUsers(id: string | undefined){
-    this.userServices.editUser(id, this.miFormulario.value)
-    .subscribe(
-      res => {
-        console.log(res);
-        this.router.navigate(['/list-users'])
+        this.router.navigate(['/publicacion']);
       },
       err => console.log(err)
     )

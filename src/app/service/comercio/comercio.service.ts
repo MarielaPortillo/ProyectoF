@@ -21,7 +21,7 @@ export class ComercioService {
   getCategoria(): Observable<Categoria[]>{
     return this.http.get<Categoria[]>(this.URL+'/listCategorias');
   };
-  oneComercio(id: String): Observable<Comercio[]> {
+  oneComercio(id: String | undefined): Observable<Comercio[]> {
     return this.http.get<Comercio[]>(this.URL + '/uno/'+id);
   }
 

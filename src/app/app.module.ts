@@ -10,7 +10,6 @@ import { PeliculaComponent } from './components/cineApp/pelicula/pelicula.compon
 import { BoletoComponent } from './components/cineApp/boleto/boleto.component';
 import { ReservaComponent } from './components/cineApp/reserva/reserva.component'; 
 import { AuthComponent } from './components/comercio/auth/auth.component';
-import { DetalleComponent } from './components/publicacion/detalle/detalle.component';
 import { AuthGuard } from './confiInit/auth.guard';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -21,6 +20,8 @@ import { FooterComponent } from './principal/footer/footer.component'
 import { CommonModule } from '@angular/common';
 import { UserlistComponent } from './components/comercio/user/userlist/userlist.component';
 import { RolesGuard } from './confiInit/roles.guard';
+import { RegisterComponent } from './components/comercio/user/register/register.component';
+import { EditUserComponent } from './components/comercio/user/edit-user/edit-user.component';
 
 
 @NgModule({
@@ -31,10 +32,11 @@ import { RolesGuard } from './confiInit/roles.guard';
     BoletoComponent,
     ReservaComponent,
     AuthComponent,
-    DetalleComponent,
     MenuComponent,
     FooterComponent,
-    UserlistComponent
+    UserlistComponent,
+    RegisterComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

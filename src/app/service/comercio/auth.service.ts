@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { JwtResponse } from 'src/app/models/comercio/jwtoken';
 import { Rol } from 'src/app/models/comercio/rol';
-import { User } from 'src/app/models/comercio/usuario';
+import { users } from 'src/app/models/comercio/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +25,8 @@ export class AuthService {
     return this.http.get<Rol[]>(this.URL+'/listRole');
   };
 
-  signUpUser(user: User): Observable<User> {
-    return this.http.post<User>(this.URL + '/signup', user);
+  signUpUser(user: users): Observable<users> {
+    return this.http.post<users>(this.URL + '/signup', user);
   }
 
   loggedIn() {
@@ -35,7 +35,9 @@ export class AuthService {
   }
 
   rolAdmin() {
-    return !!localStorage.getItem('rol')
+    if (localStorage.getItem('rol') === "admin") {
+      return true
+    }
   }
   rolSupervisor() {
     return localStorage.getItem('rol');

@@ -1,17 +1,17 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Comercio } from 'src/app/models/comercio/comercio';
-import { ComercioService } from 'src/app/service/comercio/comercio.service';
 import * as Mapboxgl from 'mapbox-gl';
 import { environment } from 'src/environments/environment';
+import { ComercioService } from 'src/app/service/comercio/comercio.service';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-comercio-list',
-  templateUrl: './comercio-list.component.html',
-  styleUrls: ['./comercio-list.component.css']
+  selector: 'app-one-comercio',
+  templateUrl: './one-comercio.component.html',
+  styleUrls: ['./one-comercio.component.css']
 })
-export class ComercioListComponent implements OnInit {
+export class OneComercioComponent implements OnInit {
 
   comercios: Comercio[] = [];
   comercio: Comercio = {} as Comercio;
@@ -27,7 +27,7 @@ export class ComercioListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.getComercios();
     (Mapboxgl as any).accessToken = environment.tokenmapa;
     this.mapa = new Mapboxgl.Map({
       container: 'contenedormapa',
@@ -35,7 +35,8 @@ export class ComercioListComponent implements OnInit {
       center: [-88.93886745727536, 14.040336479634533],
       zoom: 15.5
     });
-    this.getComercios();
+    var id = "616c9b4340e63571f40beebb";
+    this.getComercio();
 
     this.route.paramMap.subscribe((paramMap: any) => {
       const { params } = paramMap
@@ -45,20 +46,6 @@ export class ComercioListComponent implements OnInit {
     })
   }
 
-
-
-
-
-  deletePelicula(id: string) {
-
-    this.comercioService.deleteComercio(id)
-      .subscribe(
-        res => {
-          this.getComercios();
-        },
-        err => console.log(err)
-      )
-  }
   abrir = (comerci: Comercio) => {
     console.log("Se abrió el popup del comercio: " + comerci.nombreComercio)
   }
@@ -91,6 +78,17 @@ export class ComercioListComponent implements OnInit {
   }
   getComercios() {
     this.comercioService.listComercio()
+      .subscribe(
+        (res: Comercio[]) => {
+          console.log(res,+"algo para distinguir comentarios");
+          this.comercios = res;
+        },
+        err => console.log(err),
+      )
+  }
+  getComercio() {
+    
+    this.comercioService.oneComercio(this.comercio._id)
       .subscribe(
         (res: Comercio[]) => {
           console.log(res);

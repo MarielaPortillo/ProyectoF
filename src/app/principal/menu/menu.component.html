@@ -8,16 +8,20 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <ng-container *ngIf="!roles(); else rolesIn">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" routerLinkActive="active">Peliculas</a>
+                <a class="nav-link" aria-current="page" routerLinkActive="active"
+                  [routerLink]="['/publicacion']">Publicacion</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" routerLinkActive="active">Comercios</a>
-              </li>
+              
             </ng-container>
             <ng-template #rolesIn>
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" routerLinkActive="active"
-                  [routerLink]="['/publicacion']">Publicacion</a>
+                <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/all-peliculas']">Peliculas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/list-comercios']">Comercios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" routerLinkActive="active" [routerLink]="['/list-users']">Usuarios</a>
               </li>
             </ng-template>
           </ul>
@@ -28,7 +32,7 @@
                   SESION</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" [routerLink]="['/signup']">REGISTRARSE</a>
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/add-user']">REGISTRARSE</a>
               </li>
             </ng-container>
             <ng-template #loggedIn>

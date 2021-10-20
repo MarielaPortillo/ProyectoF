@@ -1,7 +1,14 @@
 <div class="container">
-    <div class="row">
+    <div class="row me-auto mb-2 mb-lg-0">
         <h1>Users List</h1>
+        
     </div>
+<div class="me-auto mb-2 mb-lg-0">
+  <button class="btn btn-primary btn-edit" [routerLink]="['/signup']" >
+    Agregar
+  </button>
+</div>
+    
 </div>
 
 <div class="container form-all">
@@ -15,9 +22,9 @@
             <p class="details-movie">Email: {{u.email}}</p>
           </div>
       
-          <button class="btn btn-primary btn-edit" >
+          <a class="btn btn-primary btn-edit" (click)="editUser(use.id)" [routerLink]="['/app-edituser/', u._id]" >
             Update
-          </button>
+          </a>
           <button class="btn btn-danger btn-delete" >
             Delete
           </button>

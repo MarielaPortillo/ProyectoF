@@ -1,10 +1,10 @@
-
-export interface User {
-    _id?: string | undefined ;
+import { Mongoose, Schema } from "mongoose";
+export interface users {
+    _id?: string ;
     username: string, 
     email: string, 
     password: string, 
-    rol: string
+    rol?: string
   
   
 }
