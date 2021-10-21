@@ -22,6 +22,8 @@ import { UserlistComponent } from './components/comercio/user/userlist/userlist.
 import { RolesGuard } from './confiInit/roles.guard';
 import { RegisterComponent } from './components/comercio/user/register/register.component';
 import { EditUserComponent } from './components/comercio/user/edit-user/edit-user.component';
+import { AddUserComponent } from './components/comercio/user/add-user/add-user.component';
+import { UserEditComponent } from './components/comercio/user/user-edit/user-edit.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { EditUserComponent } from './components/comercio/user/edit-user/edit-use
     FooterComponent,
     UserlistComponent,
     RegisterComponent,
-    EditUserComponent
+    EditUserComponent,
+    AddUserComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

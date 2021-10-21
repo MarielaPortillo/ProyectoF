@@ -1,62 +1,51 @@
-<div class="container">
+<div class="container-fliud container-login">
     <div class="row">
-        <h1>Registrate en ComerciosApp</h1>
-        <div class="col-12">
-            <div class="col-md-4 mx-auto">
-                <div class="card">
-                    <div class="card-header ">
+        <div class="col-6">
+            <div class="sidenav info-login">
+               <div class="login-main-text">
+                  <h2>Comercios App</h2>
+                  <h4>¡Los mejores comercios a un solo click!</h4>
+                  <p>Bienvenido al sistema de comercios. Aca encontrarás información y valoraciones de los comercios más importantes de todo El Salvador.</p>
+               </div>
+               <div>
+                  <img src="./assets/mano-mockup.png" alt="mockup" class="img-mockup">
+               </div>
+            </div>
+         </div>
+        <div class="col-6">
+            <div class="d-flex justify-content-center form_registre">
+                <form [formGroup]="miFormulario" (ngSubmit)="edit ? updateUsers() : submitUsers()">
+                    <h3>Registrarse</h3>
+                        
+                    <label for="">Ingrese su usuario:</label>
+                    <input type="text" class="form-control" formControlName="username" placeholder="Nombre de usuario" autofocus>
+                    <p *ngIf="!miFormulario.controls['username'].valid" class="text-danger">Ingrese su usuario.</p>
+                        
+                    <label for="">Ingrese su email:</label>
+                    <input type="email" class="form-control" formControlName="email" placeholder="user@gmail.com" autofocus>
+                    <p *ngIf="!miFormulario.controls['email'].valid" class="text-danger">Ingrese el correo en un formato correcto.</p>
+                       
+                    <label for="">Ingrese su contraseña:</label>
+                    <input type="password" class="form-control" formControlName="password" placeholder="••••••••••">
+                    <p *ngIf="!miFormulario.controls['password'].valid" class="text-danger"></p>
+                       
+                    <label for="">Seleccione el rol:</label>
+                    <select class="form-control select-option" id="rol" formControlName="rol">
+                        <option value="user" >Usuario</option>
+                    </select>
+                    <p *ngIf="!miFormulario.controls['rol'].value" class="text-danger">Seleccione un rol</p>
+                        
+
+                <div class="d-flex justify-content-center mt-3 login_container">
+                    <button [disabled]="!miFormulario.valid" class="btn btn-primary btn-save">
                         REGISTRARSE
-                    </div>
-                    <div class="card-body">
-                        <form [formGroup]="miFormulario" (ngSubmit)="submitUsers()">
-                            <div class="form-group ">
-                                <div class="col-6 mb-2">
-                                    <label for="">Ingrese su usuario:</label>
-                                    <input type="text" class="form-control" formControlName="username"
-                                        placeholder="Nombre de usuario" autofocus>
-                                    <p *ngIf="!miFormulario.controls['username'].valid" class="text-danger">Ingrese un nombre de usuario sin espacios!</p>
-                                    <label for="">Ingrese su email:</label>
-                                    <input type="email" class="form-control" formControlName="email"
-                                        placeholder="email@gmail.com" autofocus>
-                                    <p *ngIf="!miFormulario.controls['email'].valid" class="text-danger">Ingrese el correo en un formato correcto!</p>
-                                    <label for="">Ingrese su contraseña:</label>
-                                    <input type="password" class="form-control" formControlName="password"
-                                        placeholder="Password">
-                                    <p *ngIf="!miFormulario.controls['password'].valid" class="text-danger">Ingrese la password no sea insolente!</p>
-                                    <label for="">Seleccione el rol:</label>
-                                    <select class="form-control select-option" formControlName="rol">
-                                        <option value="user">user</option>
-                                    </select>
-                                    
-                                    
-                                    <!--<select class="form-control select-option" id="rol" formControlName="rol">
-                                        <option value="admin">admin</option>
-                                        <option value="supervisor">supervisor</option>
-                                        <option value="user">user</option>
-                                        <ng-container *ngFor="let r of roles" >
-                                             <option *ngFor="let r of roles" [ngValue]="r.name" >{{r.name}}</option>
-                                            <option value="r.name" >
-                                                {{r.name}}
-                                            </option>
-                                        </ng-container>
-                                    <option value="admin">admin</option>
-                                        <option value="supervisor">supervisor</option>
-                                        <option value="user">user</option>
-                                       
-                                    </select>
-                                    <p *ngIf="!miFormulario.controls['rol'].value" class="text-danger">Seleccione un rol</p>
-                                    -->
-                                </div>
-        
-                                <button [disabled]="!miFormulario.valid" class="btn btn-primary btn-save">
-                                    REGISTRARSE
-                                </button>
-                            </div>
-        
-                        </form>
-                    </div>
+                    </button>
+                    <button class="btn btn-cancelar" [routerLink]="['/list-users']" >
+                        CANCELAR
+                    </button>
                 </div>
+                </form>
             </div>
         </div>
-    </div>
+    </div>       
 </div>

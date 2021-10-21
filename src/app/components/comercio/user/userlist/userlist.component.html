@@ -22,7 +22,7 @@
             <p class="details-movie">Email: {{u.email}}</p>
           </div>
       
-          <a class="btn btn-primary btn-edit" (click)="editUser(use.id)" [routerLink]="['/app-edituser/', u._id]" >
+          <a class="btn btn-primary btn-edit" (click)="editUser(u._id)" [routerLink]="['/edit-user/', u._id]" >
             Update
           </a>
           <button class="btn btn-danger btn-delete" >

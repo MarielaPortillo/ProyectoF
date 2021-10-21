@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './user/register/register.component';
 import { UserlistComponent } from './user/userlist/userlist.component';
-import { EditUserComponent } from './user/edit-user/edit-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormBuilder, FormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
@@ -13,6 +12,8 @@ import { ComercioEditComponent } from './comercio/comercio-edit/comercio-edit.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OneComercioComponent } from './comercio/one-comercio/one-comercio.component';
 import { AddUserComponent } from './user/add-user/add-user.component'
+import { EditUserComponent } from './user/edit-user/edit-user.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
 NgxPermissionsModule.forRoot()
 
 
@@ -20,12 +21,13 @@ NgxPermissionsModule.forRoot()
   declarations: [
     RegisterComponent,
     UserlistComponent,
-    EditUserComponent,
     ComercioListComponent,
     ComercioAddComponent,
     ComercioEditComponent,
     OneComercioComponent,
-    AddUserComponent
+    AddUserComponent,
+    EditUserComponent,
+    UserEditComponent
   ],
   imports: [
     CommonModule,

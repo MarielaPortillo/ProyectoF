@@ -20,7 +20,6 @@ export class UserlistComponent implements OnInit {
     private userService: UserService, 
     private http:HttpClient, 
     private route:ActivatedRoute,
-    private fb: FormBuilder
     ) {
       
      }
@@ -32,7 +31,7 @@ export class UserlistComponent implements OnInit {
     this.route.paramMap.subscribe((paramMap:any)=>{
       const{params}=paramMap
       console.log(params)
-      this.editUser(params.id)
+      this.editUser(params._id)
       
     })
   }
@@ -43,6 +42,7 @@ export class UserlistComponent implements OnInit {
     this.userService.oneUser(id)
         .subscribe(
           response=>{
+            console.log(response)
             this.user=response;
           });
         
@@ -50,6 +50,7 @@ export class UserlistComponent implements OnInit {
   }
 
   deletePelicula(id: string){
+    
 
     this.userService.deleteUser(id)
     .subscribe(

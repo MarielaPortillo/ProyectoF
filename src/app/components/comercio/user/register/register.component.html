@@ -14,7 +14,7 @@
          </div>
         <div class="col-6">
             <div class="d-flex justify-content-center form_registre">
-                <form [formGroup]="miFormulario" (ngSubmit)="edit ? updateUsers(user._id) : submitUsers()">
+                <form [formGroup]="miFormulario" (ngSubmit)="edit ? updateUsers() : submitUsers()">
                     <h3>Registrarse</h3>
                         
                     <label for="">Ingrese su usuario:</label>
@@ -30,7 +30,7 @@
                     <p *ngIf="!miFormulario.controls['password'].valid" class="text-danger"></p>
                        
                     <label for="">Seleccione el rol:</label>
-                    <select class="form-control select-option" id="rol" formControlName="Su rol.">
+                    <select class="form-control select-option" id="rol" formControlName="rol">
                         <option *ngFor="let r of roles" [ngValue]="r.name" >{{r.name}}</option>
                     </select>
                     <p *ngIf="!miFormulario.controls['rol'].value" class="text-danger">Seleccione un rol</p>

@@ -15,7 +15,7 @@ import { UserService } from 'src/app/service/comercio/user.service';
 export class AddUserComponent implements OnInit {
 
   roles: Rol[]= [];
-  
+  users: users[]= [];
   user: users = {
     username: '',
     email: '',
@@ -24,7 +24,7 @@ export class AddUserComponent implements OnInit {
   };
   edit: boolean = false;
   mensage = "Agregar pelicula";
-  id: string | null | undefined;
+  id: any;
 
   miFormulario!: FormGroup;
 
@@ -36,7 +36,22 @@ export class AddUserComponent implements OnInit {
     private formBuilder: FormBuilder
     ) {
       //this.getDetalle();
-
+      this.id = this.activateRoute.snapshot.params['id'];
+      console.log(this.id)
+    if (this.id) {
+      this.edit = true;
+      this.userServices.oneUser(this.id)
+      .subscribe(
+        (data: users) => {
+          this.user = data;
+          
+        },
+        err => console.log(err)
+      )
+    }
+    else{
+      this.edit = false
+    }
     
 
       this.miFormulario = new FormGroup({
@@ -53,31 +68,23 @@ export class AddUserComponent implements OnInit {
   ngOnInit(): void {
     this.getRol();
 
+
     const param = this.activateRoute.snapshot.params;
     console.log(param)
     if (param) {
+      this.edit = true;
       this.userServices.oneUser(param.id)
       .subscribe(
         (res) => {
           console.log(res);
           this.user = res;
-          this.edit = true;
         },
         err => console.log(err)
       )
     }
-  }
-
-  updateUser(id: string){
-  
-    this.userServices.editUser(id, this.miFormulario.value)
-    .subscribe(
-      res => {
-        console.log(res);
-        this.router.navigate(['/all-peliculas'])
-      },
-      err => console.log(err)
-    )
+    else{
+      this.edit = false
+    }
   }
   getRol(){
     this.userServices.getRol()
@@ -91,11 +98,21 @@ export class AddUserComponent implements OnInit {
   }
   submitUsers(){
     console.log(this.miFormulario.value);
-    this.userServices.addUser(this.miFormulario.value)
+    this.userServices.createUser(this.miFormulario.value)
     .subscribe(
       res => {
         console.log(res);
-        this.router.navigate(['/publicacion']);
+        this.router.navigate(['/list-users']);
+      },
+      err => console.log(err)
+    )
+  }
+  updateUsers(){
+    this.userServices.editUser(this.user._id, this.miFormulario.value)
+    .subscribe(
+      res => {
+        console.log(res);
+        this.router.navigate(['/list-users'])
       },
       err => console.log(err)
     )

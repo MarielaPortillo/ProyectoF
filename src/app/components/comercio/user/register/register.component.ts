@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
   };
   edit: boolean = false;
   mensage = "Agregar pelicula";
-  id: string | null | undefined;
+  id: any;
 
   miFormulario!: FormGroup;
 
@@ -36,7 +36,22 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder
     ) {
       //this.getDetalle();
-
+      this.id = this.activateRoute.snapshot.params['id'];
+      console.log(this.id)
+    if (this.id) {
+      this.edit = true;
+      this.userServices.oneUser(this.id)
+      .subscribe(
+        (data: users) => {
+          this.user = data;
+          
+        },
+        err => console.log(err)
+      )
+    }
+    else{
+      this.edit = false
+    }
     
 
       this.miFormulario = new FormGroup({
@@ -53,18 +68,22 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.getRol();
 
+
     const param = this.activateRoute.snapshot.params;
     console.log(param)
     if (param) {
+      this.edit = true;
       this.userServices.oneUser(param.id)
       .subscribe(
         (res) => {
           console.log(res);
           this.user = res;
-          this.edit = true;
         },
         err => console.log(err)
       )
+    }
+    else{
+      this.edit = false
     }
   }
   getRol(){
@@ -88,8 +107,8 @@ export class RegisterComponent implements OnInit {
       err => console.log(err)
     )
   }
-  updateUsers(id: string | undefined){
-    this.userServices.editUser(id, this.miFormulario.value)
+  updateUsers(){
+    this.userServices.editUser(this.user._id, this.miFormulario.value)
     .subscribe(
       res => {
         console.log(res);

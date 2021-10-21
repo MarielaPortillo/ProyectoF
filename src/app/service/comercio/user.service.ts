@@ -22,6 +22,7 @@ export class UserService {
     return this.http.get<Rol[]>(this.URL+'/listRole');
   };
   oneUser(id: String | undefined): Observable<users> {
+    console.log(id);
     return this.http.get<users>(this.URL + '/buscarUsuario/'+id);
   }
   addUser(user: users): Observable<users> {
