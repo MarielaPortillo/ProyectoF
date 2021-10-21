@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { peliculas } from '../../models/cineApp/pelicula';
 import { Injectable } from '@angular/core';
+import { Categoria } from 'src/app/models/comercio/categoria';
 
 
 

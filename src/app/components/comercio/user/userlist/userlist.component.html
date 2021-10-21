@@ -1,35 +1,46 @@
 <div class="container">
-    <div class="row me-auto mb-2 mb-lg-0">
-        <h1>Users List</h1>
-        
-    </div>
-<div class="me-auto mb-2 mb-lg-0">
-  <button class="btn btn-primary btn-edit" [routerLink]="['/signup']" >
+  <div class="row me-auto mb-2 mb-lg-0">
+    <h1>Users List</h1>
+
+  </div>
+
+</div>
+<div class="me-auto mb-2 mb-lg-0 aling-right">
+  <button class="btn btn-primary btn-edit" mat-raised-button color="primary" (click)=" openDialog()">
+    <mat-icon>add</mat-icon>
     Agregar
   </button>
 </div>
-    
-</div>
+<div fxLayoutAlign="center">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="users" class="table table-striped" #tabla1>
 
-<div class="container form-all">
-  <div class="row">
-    <ng-container *ngFor="let u of users">
-    <div class="col-3 card-movie">
-        <div class="card">
-          <img [src]="" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Nombre de Usuario: {{u.username}}</h5>
-            <p class="details-movie">Email: {{u.email}}</p>
-          </div>
-      
-          <a class="btn btn-primary btn-edit" (click)="editUser(u._id)" [routerLink]="['/edit-user/', u._id]" >
-            Update
-          </a>
-          <button class="btn btn-danger btn-delete" >
-            Delete
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef> Nombre de usuario </th>
+        <td mat-cell *matCellDef="let u of users"> {{u.username}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let u of users"> {{u.email}} </td>
+      </ng-container>
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <td mat-cell *matCellDef="let u of users" fxLayoutAlign="start">
+          <button mat-icon-button class="pointer" style="color: #1f516f" matTooltip="Editar usuario">
+            <mat-icon (click)="editUser(u._id)" [routerLink]="['/','edit-user', u._id]">edit</mat-icon>
           </button>
-        </div>
-      </div>
-    </ng-container>
+          <button mat-icon-button (click)="eliminarUsuario(u._id)" class="pointer" style="color: #e15639"
+            matTooltip="Eliminar Usuario">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="columnas; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
   </div>
 </div>

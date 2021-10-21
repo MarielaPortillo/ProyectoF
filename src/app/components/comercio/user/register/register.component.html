@@ -14,19 +14,19 @@
          </div>
         <div class="col-6">
             <div class="d-flex justify-content-center form_registre">
-                <form [formGroup]="miFormulario" (ngSubmit)="edit ? updateUsers() : submitUsers()">
+                <form [formGroup]="miFormulario" (ngSubmit)="usuarioExist() ? submitUsers() : updateUsers()">
                     <h3>Registrarse</h3>
                         
                     <label for="">Ingrese su usuario:</label>
-                    <input type="text" class="form-control" formControlName="username" placeholder="Nombre de usuario" autofocus>
+                    <input type="text" class="form-control" [(ngModel)]="user.username" formControlName="username" placeholder="Nombre de usuario" autofocus>
                     <p *ngIf="!miFormulario.controls['username'].valid" class="text-danger">Ingrese su usuario.</p>
                         
                     <label for="">Ingrese su email:</label>
-                    <input type="email" class="form-control" formControlName="email" placeholder="user@gmail.com" autofocus>
+                    <input type="email" class="form-control" [(ngModel)]="user.email" formControlName="email" placeholder="user@gmail.com" autofocus>
                     <p *ngIf="!miFormulario.controls['email'].valid" class="text-danger">Ingrese el correo en un formato correcto.</p>
                        
                     <label for="">Ingrese su contraseña:</label>
-                    <input type="password" class="form-control" formControlName="password" placeholder="••••••••••">
+                    <input type="password" class="form-control" [(ngModel)]="user.password" formControlName="password" placeholder="••••••••••">
                     <p *ngIf="!miFormulario.controls['password'].valid" class="text-danger"></p>
                        
                     <label for="">Seleccione el rol:</label>
@@ -37,12 +37,11 @@
                         
 
                 <div class="d-flex justify-content-center mt-3 login_container">
-                    <button [disabled]="!miFormulario.valid" class="btn btn-primary btn-save">
-                        REGISTRARSE
-                    </button>
-                    <button class="btn btn-cancelar" [routerLink]="['/list-users']" >
-                        CANCELAR
-                    </button>
+                    <button [disabled]="!miFormulario.valid" class="btn btn-primary btn-save" [mat-dialog-close]="false">
+                        REGISTRAR
+                      </button>
+                    <button class="btn btn-danger btn-save" [mat-dialog-close]="false">CANCELAR
+                      </button>
                 </div>
                      <!--    <div class="col-6 mb-2">
                                     <label for="">Ingrese su usuario:</label>

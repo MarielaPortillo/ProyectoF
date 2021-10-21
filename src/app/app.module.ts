@@ -11,10 +11,12 @@ import { BoletoComponent } from './components/cineApp/boleto/boleto.component';
 import { ReservaComponent } from './components/cineApp/reserva/reserva.component'; 
 import { AuthComponent } from './components/comercio/auth/auth.component';
 import { AuthGuard } from './confiInit/auth.guard';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokeninterceptorService } from './service/comercio/token-interceptor.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MenuComponent } from './principal/menu/menu.component';
 import { FooterComponent } from './principal/footer/footer.component'
 import { CommonModule } from '@angular/common';
@@ -24,6 +26,10 @@ import { RegisterComponent } from './components/comercio/user/register/register.
 import { EditUserComponent } from './components/comercio/user/edit-user/edit-user.component';
 import { AddUserComponent } from './components/comercio/user/add-user/add-user.component';
 import { UserEditComponent } from './components/comercio/user/user-edit/user-edit.component';
+import { EditmoviesComponent } from './components/cineApp/editmovies/editmovies.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { AddpeliculaComponent } from './components/cineApp/addpelicula/addpelicula.component';
 
 
 @NgModule({
@@ -40,15 +46,23 @@ import { UserEditComponent } from './components/comercio/user/user-edit/user-edi
     RegisterComponent,
     EditUserComponent,
     AddUserComponent,
-    UserEditComponent
+    UserEditComponent,
+    EditmoviesComponent,
+    AddpeliculaComponent,
+    EditmoviesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatTableModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatIconModule
 
   ],
   providers: [

@@ -1,29 +1,4 @@
-<div class="container">
-    <div class="row">
-        <h1>Registrate en ComerciosApp</h1>
-    </div>
-</div>
 
-<div class="container form-add">
-    <form >
-        <div class="row">
-            <div class="col-6">
-                <label for="">Titulo:</label>
-                <input type="text" name="username"  class="form-control" placeholder="Nombre de la pelicula" >
-                 
-                <label for="">email:</label>
-                <input type="email" class="form-control"  name="clasificacion" placeholder="A, B ó C">
-                
-                <select class="form-control select-option"  name="rol">
-                    <option   ></option>
-                </select>
-                
-            </div>
-            <button  class="btn btn-primary btn-save">Save Changes</button>
-        
-        </div>
-    </form>
-</div>
 
 <div class="container-fliud container-login">
     <div class="row">
@@ -41,18 +16,18 @@
          </div>
         <div class="col-6">
             <div class="d-flex justify-content-center form_registre">
-                <form >
+                <form (ngSubmit)="updateUser()">
                     <h3>Editando</h3>
                         
                     <label for="">Ingrese su usuario:</label>
-                    <input type="text" class="form-control" name="username"  placeholder="Nombre de usuario" autofocus>
+                    <input type="text" class="form-control" name="username" [(ngModel)]="user.username" placeholder="Nombre de usuario" autofocus>
                         
                     <label for="">Ingrese su email:</label>
-                    <input type="email" class="form-control" name="email"  placeholder="user@gmail.com" >
+                    <input type="email" class="form-control" name="email" [(ngModel)]="user.email" placeholder="user@gmail.com" >
                        
                     <label for="">Seleccione el rol:</label>
-                    <select class="form-control select-option" id="rol" name="rol">
-                        <option >User</option>
+                    <select class="form-control select-option" id="rol" formControlName="rol">
+                        <option *ngFor="let r of roles" [ngValue]="r.name" >{{r.name}}</option>
                     </select>
 
                 <div class="d-flex justify-content-center mt-3 login_container">

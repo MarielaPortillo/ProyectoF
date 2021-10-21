@@ -11,6 +11,8 @@ import { Comercio } from 'src/app/models/comercio/comercio';
 export class ComercioService {
 
   private URL = 'http://localhost:3000';
+  selectedComercio: Comercio;
+  comercio: Comercio[];
   constructor(
     private http: HttpClient, 
     private router: Router,
@@ -28,8 +30,9 @@ export class ComercioService {
   createComercio(comercio: Comercio): Observable<Comercio> {
     return this.http.post<Comercio>(this.URL + '/registrar', comercio);
   }
-  editComercio( id: String,comercio: Comercio): Observable<Comercio> {
-    return this.http.put<Comercio>(this.URL + '/editarComercio/'+id, comercio);
+ 
+  editComercio(comercio: Comercio): Observable<Comercio> {
+    return this.http.put<Comercio>(this.URL + '/editarComercio/'+`${comercio._id}`, comercio);
   }
   deleteComercio(id: string): Observable<Comercio> {
     return this.http.delete<Comercio>(this.URL + '/eliminarComercio/'+id);

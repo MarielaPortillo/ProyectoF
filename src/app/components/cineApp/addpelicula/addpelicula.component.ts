@@ -17,11 +17,6 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 })
 export class AddpeliculaComponent implements OnInit {
 
-  miFormulario: FormGroup;
-
-
-  //detalle: detalles[] = [];
-  
   pelicula: peliculas = {
     titulo : '',
     duracion: '',
@@ -37,42 +32,43 @@ export class AddpeliculaComponent implements OnInit {
   mensage = "Agregar pelicula";
 
   id: string | null | undefined;
-  
+
+
+  miFormulario!: FormGroup;
+
 
 
 
 
   constructor(
-    private peliculaService: PeliculaService, 
+    private allmovieService: PeliculaService,
     private router: Router,
     private activateRoute: ActivatedRoute,
     private http: HttpClient,
     private formBuilder: FormBuilder
-  ) { 
-  
+    ) {
+      //this.getDetalle();
+      this.miFormulario = new FormGroup({
 
-  this.miFormulario = new FormGroup({
-    'titulo' : new FormControl('',[Validators.required,Validators.minLength(2)]),
-    'duracion': new FormControl('',[Validators.required,Validators.maxLength(15)]),
-    'clasificacion':  new FormControl('',[Validators.required,Validators.maxLength(1)]),
-    'imagen': new FormControl('',),
-    'genero': new FormControl('',),
-    'estatus': new FormControl('',),
-    'fechaEstreno': new FormControl('',),
-    'precioBoleto': new FormControl('',)
-  });
-  console.log(this.miFormulario.value);
-
- }
-
+        'titulo' : new FormControl('',[Validators.required,Validators.minLength(2)]),
+        'duracion': new FormControl('',[Validators.required,Validators.maxLength(15)]),
+        'clasificacion':  new FormControl('',[Validators.required,Validators.maxLength(1)]),
+        'imagen': new FormControl('',),
+        'genero': new FormControl('',),
+        'estatus': new FormControl('',),
+        'fechaEstreno': new FormControl('',),
+        'precioBoleto': new FormControl('',)
+      });
+      console.log(this.miFormulario.value);
+    
+     }
 
   ngOnInit(): void {
 
-    
     const param = this.activateRoute.snapshot.params;
     console.log(param)
     if (param) {
-      this.peliculaService.getPelicula(param.id)
+      this.allmovieService.getPelicula(param.id)
       .subscribe(
         res => {
           console.log(res);
@@ -82,11 +78,11 @@ export class AddpeliculaComponent implements OnInit {
         err => console.log(err)
       )
     }
+    
   }
 
-
-  submitPeliculas(){
-    this.peliculaService.createPelicula(this.miFormulario.value)
+  submitMovies(){
+    this.allmovieService.createPelicula(this.miFormulario.value)
     .subscribe(
       res => {
         console.log(res);
@@ -97,18 +93,15 @@ export class AddpeliculaComponent implements OnInit {
   }
   updatePelicula(){
   
-    this.peliculaService.updatePelicula(this.pelicula._id, this.miFormulario.value)
+    this.allmovieService.updatePelicula(this.pelicula._id, this.pelicula)
     .subscribe(
       res => {
         console.log(res);
-        this.router.navigate(['/all-peliculas'])
+        this.router.navigate(['/all-movies'])
       },
       err => console.log(err)
     )
   }
-
-
-
 
 }
 

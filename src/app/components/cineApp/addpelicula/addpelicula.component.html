@@ -1,12 +1,11 @@
 <div class="container">
     <div class="row">
-        <h1>Agregar nueva Pelicula a cineapp+</h1>
+        <h1>Add new movie to cineapp+</h1>
     </div>
 </div>
 
-
 <div class="container form-add">
-    <form formGroup]="miFormulario" (ngSubmit)="edit ? updatePelicula() : submitPeliculas()">
+    <form [formGroup]="miFormulario" (ngSubmit)="edit ? updatePelicula() : submitMovies()">
         <div class="row">
             <div class="col-6">
                 <label for="">Titulo:</label>
@@ -20,7 +19,7 @@
                 <label for="">Genero:</label>
                 <input type="text" class="form-control"  formControlName="genero" placeholder="Acción, comedia, teror">
                 <p *ngIf="!miFormulario.controls['genero'].valid" class="text-danger">El genero de la pelicula debe contener al menos 4 caracteres</p>
-                <label for="">Estatus:</label> 
+                <label for="">Estado:</label> 
                 
                 <select class="form-control select-option"  formControlName="estatus">
                     <option value="activo" >Activo</option>
@@ -41,12 +40,15 @@
                 <label for="">Fecha de estreno:</label>
                 <input type="date" class="form-control"  formControlName="fechaEstreno" placeholder="28/08/2021">
                 <p *ngIf="!miFormulario.controls['fechaEstreno'].valid" class="text-danger">Escriba la fecha de estreño</p>
-               
-                <label for="">PrecioBoleto:</label>
-                <input type="text" formControlName="precioBoleto" class="form-control" placeholder="Precio Boleto" >
-                <p *ngIf="!miFormulario.controls['precioBoleto'].valid" class="text-danger">El Precio debe contener valor</p> 
-
-               
+                <label for="">Precio del boleto:</label>
+                <input type="text" class="form-control"  formControlName="precioBoleto" placeholder="Estado">
+                <p *ngIf="!miFormulario.controls['precioBoleto'].valid" class="text-danger">Ingrese un precio para el boleto</p>
+                <!--<select class="form-control select-option"  name="detalle_id" *ngFor="let d of detalle" >
+                    <option [(ngModel)]="d._id" >
+                        {{d.director}}
+                    </option>
+                </select>
+                <p *ngIf="!miFormulario.controls['detalle_id'].valid" class="text-danger">Escoja el direcctor para el detalle</p>-->
             </div>
             
             <button [disabled]="!miFormulario.valid" class="btn btn-primary btn-save">Save Movie</button>

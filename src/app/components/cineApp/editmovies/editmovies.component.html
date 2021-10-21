@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <h1>Add new movie to cineapp+</h1>
+    </div>
+</div>
+
+<div class="container form-add">
+    <form (ngSubmit)="updatePelicula()">
+        <div class="row">
+            <div class="col-6">
+                <label for="">Titulo:</label>
+                <input type="text" name="titulo" [(ngModel)]="pelicula.titulo" class="form-control" placeholder="Nombre de la pelicula" >
+                 
+    
+                <label for="">Clasificación:</label>
+                <input type="text" class="form-control" [(ngModel)]="pelicula.clasificacion" name="clasificacion" placeholder="A, B ó C">
+                
+
+                <label for="">Genero:</label>
+                <input type="text" class="form-control" [(ngModel)]="pelicula.genero" name="genero" placeholder="Acción, comedia, teror">
+                
+                <label for="">Estado:</label> 
+                
+                <select class="form-control select-option"  name="estatus">
+                    <option value="activo" [(ngModel)]="pelicula.estatus" >Activo</option>
+                    <option value="inactivo">Inactivo</option>
+
+                </select>
+                
+            </div>
+
+            <div class="col-6">
+                <label for="">Duración:</label>
+                <input type="text" class="form-control" [(ngModel)]="pelicula.duracion" name="duracion" placeholder="Duracion de la pelicula">
+                
+
+                <label for="">Portada:</label>
+                <input type="text" class="form-control" [(ngModel)]="pelicula.imagen" name="imagen" placeholder="Url de la portada">
+                
+                <label for="">Fecha de estreno:</label>
+                <input type="date" class="form-control" [(ngModel)]="pelicula.fechaEstreno" name="fechaEstreno" placeholder="28/08/2021">
+                
+                <label for="">Detalle:</label>
+                <input type="text" class="form-control" [(ngModel)]="pelicula.precioBoleto" name="precioBoleto" placeholder="Precio del boleto">
+                
+                <!--<select class="form-control select-option"  name="detalle_id" *ngFor="let d of detalle" >
+                    <option [(ngModel)]="d._id" >
+                        {{d.director}}
+                    </option>
+                </select>
+                <p *ngIf="!miFormulario.controls['detalle_id'].valid" class="text-danger">Escoja el direcctor para el detalle</p>-->
+            </div>
+            
+            <button  class="btn btn-primary btn-save">Save Changes</button>
+        
+        </div>
+    </form>
+</div>

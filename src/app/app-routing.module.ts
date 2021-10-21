@@ -15,6 +15,7 @@ import { RegisterComponent } from './components/comercio/user/register/register.
 import { AddUserComponent } from './components/comercio/user/add-user/add-user.component';
 import { UserService } from './service/comercio/user.service';
 import { UserEditComponent } from './components/comercio/user/user-edit/user-edit.component';
+import { EditmoviesComponent } from './components/cineApp/editmovies/editmovies.component';
 
 /**
  * ---------------------------OJO-----------------------------------------------
@@ -30,10 +31,10 @@ const routes: Routes = [
   {path:"signup", component: RegisterComponent, canActivate:[AuthGuard]},
   {path:"createUser", component: AddUserComponent},
   {path:"list-comercios",component:ComercioListComponent, canActivate:[AuthGuard]},
-  {path:"edit-user", component: UserEditComponent, canActivate:[AuthGuard]},
-  {path:"add-pelicula",component:AddpeliculaComponent, canActivate:[AuthGuard, RolesGuard]},
+  {path:"edit-user/:id", component: UserEditComponent, canActivate:[AuthGuard]},
+  {path:"add-pelicula",component:AddpeliculaComponent, canActivate:[AuthGuard]},
   {path:"all-peliculas",component:PeliculaComponent, canActivate:[AuthGuard,]},
-  {path:"editpelicula/:id", component: AddpeliculaComponent, canActivate:[AuthGuard]},
+  {path:"app-editmovies/:id", component: EditmoviesComponent, canActivate:[AuthGuard]},
   { path: 'publicacion', component: DashboardComponent, canActivate:[AuthGuard]},
 
   {path:"add-boleto",component:BoletoComponent},

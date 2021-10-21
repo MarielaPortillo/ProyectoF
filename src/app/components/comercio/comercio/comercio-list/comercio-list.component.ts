@@ -1,10 +1,15 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Comercio } from 'src/app/models/comercio/comercio';
 import { ComercioService } from 'src/app/service/comercio/comercio.service';
 import * as Mapboxgl from 'mapbox-gl';
 import { environment } from 'src/environments/environment';
+import { NgForm } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+import { ComercioAddComponent } from '../comercio-add/comercio-add.component';
 
 @Component({
   selector: 'app-comercio-list',
@@ -17,11 +22,18 @@ export class ComercioListComponent implements OnInit {
   comercio: Comercio = {} as Comercio;
   comer: any;
   mapa: Mapboxgl.Map;
+  addMapa: Mapboxgl.Map;
+  displayedColumns: string[] = ['_id', 'nombreComercio', 'telefono', 'redes_sociales', 'acciones'];
+  columns: string[] = ['nombreComercio', 'telefono', 'redes_sociales'];
+  columnas: string[] = ['nombreComercio', 'telefono', 'redes_sociales', 'acciones'];
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  dataSource: MatTableDataSource<Comercio>;
 
   constructor(
-    private comercioService: ComercioService,
+    public comercioService: ComercioService,
     private http: HttpClient,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog,
   ) {
 
   }
@@ -36,6 +48,7 @@ export class ComercioListComponent implements OnInit {
       zoom: 15.5
     });
     this.getComercios();
+    
 
     this.route.paramMap.subscribe((paramMap: any) => {
       const { params } = paramMap
@@ -45,20 +58,32 @@ export class ComercioListComponent implements OnInit {
     })
   }
 
-
-
-
-
-  deletePelicula(id: string) {
-
-    this.comercioService.deleteComercio(id)
+  openDialog(comercio?: Comercio) {
+    this.dialog.open(ComercioAddComponent, { data: { comercio } })
+  }
+  editComercio(id: string | undefined ){
+    
+    this.comercioService.oneComercio(id)
+        .subscribe(
+          response=>{
+            console.log(response)
+            this.comercios=response;
+          });
+        
+   
+  }
+  eliminarComercio(id: string) {
+    if (confirm("estas seguro de eliminar este usuario?")) {
+      this.comercioService.deleteComercio(id)
       .subscribe(
         res => {
           this.getComercios();
-        },
-        err => console.log(err)
-      )
+        },)
+    }
   }
+  
+
+
   abrir = (comerci: Comercio) => {
     console.log("Se abrió el popup del comercio: " + comerci.nombreComercio)
   }
@@ -69,7 +94,6 @@ export class ComercioListComponent implements OnInit {
 
 
   marcador(comerci: Comercio) {
-
     const globo = new Mapboxgl.Popup({ className: 'globito' })
       .setHTML(`<p> ${comerci.nombreComercio} </p>
                 <p>Contactenos al: </p>

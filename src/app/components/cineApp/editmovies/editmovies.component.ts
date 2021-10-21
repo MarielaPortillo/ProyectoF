@@ -2,31 +2,34 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Rol } from 'src/app/models/comercio/rol';
-import { users } from 'src/app/models/comercio/usuario';
-import { UserService } from 'src/app/service/comercio/user.service';
+import { peliculas } from 'src/app/models/cineApp/pelicula';
+import { PeliculaService } from 'src/app/service/cineApp/pelicula.service';
 
 @Component({
-  selector: 'app-user-edit',
-  templateUrl: './user-edit.component.html',
-  styleUrls: ['./user-edit.component.css']
+  selector: 'app-editmovies',
+  templateUrl: './editmovies.component.html',
+  styleUrls: ['./editmovies.component.css']
 })
-export class UserEditComponent implements OnInit {
-  hide = true;
-  roles: Rol[]= [];
-  user: users = {
-    username : '',
-    email: '',
-    password:'',
+export class EditmoviesComponent implements OnInit {
+
+  pelicula: peliculas = {
+    titulo : '',
+    duracion: '',
+    clasificacion:'',
+    imagen:'',
+    genero: '',
+    estatus: 'Activa',
+    fechaEstreno: '',
+    precioBoleto: ''
 
   };
   edit: boolean = false;
-  mensage = "Agregar usuario";
+  mensage = "Agregar pelicula";
 
-  id: string | undefined;
+  id: string | null | undefined;
 
   constructor(
-    private userService: UserService,
+    private allmovieService: PeliculaService,
     private router: Router,
     private activateRoute: ActivatedRoute,
     private http: HttpClient,
@@ -34,18 +37,22 @@ export class UserEditComponent implements OnInit {
     ) {
       //this.getDetalle();
 
+    
+
+     
+
      }
 
   ngOnInit(): void {
-    this.getRol();
+
     const param = this.activateRoute.snapshot.params;
     console.log(param)
     if (param) {
-      this.userService.oneUser(param.id)
+      this.allmovieService.getPelicula(param.id)
       .subscribe(
         res => {
           console.log(res);
-          this.user = res;
+          this.pelicula = res;
           this.edit = true;
         },
         err => console.log(err)
@@ -54,28 +61,19 @@ export class UserEditComponent implements OnInit {
     this.activateRoute.paramMap.subscribe((paramMap:any)=>{
       const{params}=paramMap
       console.log(params)
-      this.user = params
+      this.pelicula = params
       
     })
+    
+  }
 
-  }
-  getRol(){
-    this.userService.getRol()
-    .subscribe(
-      (res :Rol[]) => {
-        console.log(res);
-        this.roles = res ;
-      },
-      err => console.log(err),
-    )
-  }
-  updateUser(){
+  updatePelicula(){
   
-    this.userService.editUser(this.user._id, this.user)
+    this.allmovieService.updatePelicula(this.pelicula._id, this.pelicula)
     .subscribe(
       res => {
         console.log(res);
-        this.router.navigate(['/list-users'])
+        this.router.navigate(['/all-movies'])
       },
       err => console.log(err)
     )

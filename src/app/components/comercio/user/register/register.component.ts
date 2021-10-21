@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Rol } from 'src/app/models/comercio/rol';
 import { users } from 'src/app/models/comercio/usuario';
 import { AuthService } from 'src/app/service/comercio/auth.service';
 import { UserService } from 'src/app/service/comercio/user.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-register',
@@ -22,13 +23,15 @@ export class RegisterComponent implements OnInit {
     password: '',
 
   };
-  edit: boolean = false;
+  ocultar = false;
   mensage = "Agregar pelicula";
   id: any;
 
   miFormulario!: FormGroup;
 
   constructor(
+    public dialogRef: MatDialogRef<RegisterComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private userServices: UserService,
     private router: Router,
     private activateRoute: ActivatedRoute,
@@ -36,7 +39,8 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder
     ) {
       //this.getDetalle();
-      this.id = this.activateRoute.snapshot.params['id'];
+      
+      /*this.id = this.activateRoute.snapshot.params['id'];
       console.log(this.id)
     if (this.id) {
       this.edit = true;
@@ -51,40 +55,26 @@ export class RegisterComponent implements OnInit {
     }
     else{
       this.edit = false
-    }
+    }*/
     
 
-      this.miFormulario = new FormGroup({
-
-        'username' : new FormControl('',[Validators.required,Validators.minLength(4)]),
-        'email': new FormControl('',[Validators.required]),
-        'password':  new FormControl('',[Validators.required,Validators.minLength(8)]),
-        'rol': new FormControl(''),
-      });
-      console.log(this.miFormulario.value);
+      
 
      }
 
   ngOnInit(): void {
     this.getRol();
+    this.miFormulario = this.formBuilder.group({
+
+      username : ([Validators.required,Validators.minLength(4)]),
+      email: ([Validators.required]),
+      password:  ([Validators.required,Validators.minLength(8)]),
+      rol: (''),
+    });
+    this.users = this.data['users'] || {}
 
 
-    const param = this.activateRoute.snapshot.params;
-    console.log(param)
-    if (param) {
-      this.edit = true;
-      this.userServices.oneUser(param.id)
-      .subscribe(
-        (res) => {
-          console.log(res);
-          this.user = res;
-        },
-        err => console.log(err)
-      )
-    }
-    else{
-      this.edit = false
-    }
+    
   }
   getRol(){
     this.userServices.getRol()
@@ -96,9 +86,12 @@ export class RegisterComponent implements OnInit {
       err => console.log(err),
     )
   }
+  usuarioExist() {
+    return this.user._id === undefined;
+  }
   submitUsers(){
     console.log(this.miFormulario.value);
-    this.userServices.createUser(this.miFormulario.value)
+    this.userServices.createUser(this.user)
     .subscribe(
       res => {
         console.log(res);
@@ -108,14 +101,10 @@ export class RegisterComponent implements OnInit {
     )
   }
   updateUsers(){
-    this.userServices.editUser(this.user._id, this.miFormulario.value)
-    .subscribe(
-      res => {
-        console.log(res);
-        this.router.navigate(['/list-users'])
-      },
-      err => console.log(err)
-    )
+    this.userServices.editUser(this.user._id, this.user)
+    .subscribe(() => {
+      this.dialogRef.close()
+    })
   }
 
 }
