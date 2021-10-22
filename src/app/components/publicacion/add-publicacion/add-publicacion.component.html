@@ -1,0 +1,43 @@
+<div class="container-fliud container-login">
+    <div class="row">
+        <div class="col-6">
+            <div class="sidenav info-login">
+               <div class="login-main-text">
+                  <h2>Comercios App</h2>
+                  <h4>¡Los mejores comercios a un solo click!</h4>
+                  <p>Bienvenido al sistema de comercios. Aca encontrarás información y valoraciones de los comercios más importantes de todo El Salvador.</p>
+               </div>
+               <div>
+                  <img src="./assets/mano-mockup.png" alt="mockup" class="img-mockup">
+               </div>
+            </div>
+         </div>
+        <div class="col-6">
+            <div class="d-flex justify-content-center form_registre">
+                <form (ngSubmit)="submitPublicacion()">
+                    <h3>Registrarse</h3>
+                        
+                    <label for="">Director\es:</label>
+                    <input type="text" class="form-control" [(ngModel)]="detalle.director" name="director" placeholder="Director" autofocus>
+                    <label for="">Actor\es:</label>
+                    <input type="email" class="form-control" [(ngModel)]="detalle.actores" name="actores" placeholder="Actores" autofocus>
+                    <label for="">Sinopsis:</label>
+                    <input type="text" class="form-control" [(ngModel)]="detalle.sinopsis" name="sinopsis" placeholder="Descripcion">
+                    <label for="">Seleccione un pelicula:</label>
+                    <select class="form-control select-option" id="pelicula" name="pelicula">
+                        <option *ngFor="let p of peliculas" [ngValue]="p.titulo" >{{p.titulo}}</option>
+                    </select>
+                    <label for="">Imagen:</label>
+                    <input type="text" class="form-control" [(ngModel)]="detalle.imagen" name="imagen" placeholder="URL de la imagen">
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                    <button class="btn btn-primary btn-save" >
+                        REGISTRAR
+                      </button>
+                    <button class="btn btn-cancelar" >CANCELAR
+                      </button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>       
+</div>

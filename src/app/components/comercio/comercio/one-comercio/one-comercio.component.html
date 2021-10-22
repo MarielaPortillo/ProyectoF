@@ -1,14 +1,25 @@
-<div class="container">
+<div class="container container-comercio">
+    <p>Puedes visualizar los comercios que más te convengan a continuación:</p>
     <div class="row">
-        <div class="col-12">
+        <div class="col-6">
 
-            <h3>Visite nuestras instalaciones</h3>
-
-
-            <div id="contenedormapa"></div>
-
-            
+            <div class="mapa" id="contenedormapa"></div>
 
         </div>
+        <div class="col-6">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="card-title" name="nombreComercio" [(ngModel)]="comercio.nombreComercio">
+                    {{comercio.nombreComercio}}</h3>
+                <h3 class="card-title" name="telefono" [(ngModel)]="comercio.telefono">{{comercio.telefono}}</h3>
+                <h3 class="card-title" name="redes_sociales" [(ngModel)]="comercio.redes_sociales">
+                    {{comercio.redes_sociales}}</h3>
+            </div>
+            <div class="card-header d-flex justify-content-between align-items-center" *ngFor="let c of comentarios">
+                <h3 class="card-title">
+                    {{c.comentario}}</h3>
+                <h3 class="card-title"> Valoracion: {{c.valoracion}}</h3>
+            </div>
+        </div>
     </div>
+
 </div>

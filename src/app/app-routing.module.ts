@@ -18,6 +18,9 @@ import { UserEditComponent } from './components/comercio/user/user-edit/user-edi
 import { EditmoviesComponent } from './components/cineApp/editmovies/editmovies.component';
 import { ComercioAddComponent } from './components/comercio/comercio/comercio-add/comercio-add.component';
 import { ComercioEditComponent } from './components/comercio/comercio/comercio-edit/comercio-edit.component';
+import { OneComercioComponent } from './components/comercio/comercio/one-comercio/one-comercio.component';
+import { ListPublicacionComponent } from './components/publicacion/list-publicacion/list-publicacion.component';
+import { AddPublicacionComponent } from './components/publicacion/add-publicacion/add-publicacion.component';
 
 /**
  * ---------------------------OJO-----------------------------------------------
@@ -38,11 +41,12 @@ const routes: Routes = [
 
   {path:"add-pelicula",component:AddpeliculaComponent, canActivate:[AuthGuard]},
   {path:"all-peliculas",component:PeliculaComponent, canActivate:[AuthGuard,]},
-  
+  {path:"viewComercio/:id",component:OneComercioComponent, canActivate:[AuthGuard,]},
   {path:"app-editmovies/:id", component: EditmoviesComponent, canActivate:[AuthGuard]},
-  {path:'publicacion', component: DashboardComponent, canActivate:[AuthGuard]},
+  {path:'publicacion', component: ListPublicacionComponent, canActivate:[AuthGuard]},
   {path:"add-comercio", component:ComercioAddComponent, canActivate:[AuthGuard]},
-
+  
+  {path:"add-publicacion", component:AddPublicacionComponent,},
   {path:"add-boleto",component:BoletoComponent},
   {path:"add-reserva",component:ReservaComponent},
   {path:"search/reserva/:id",component:ReservaComponent},

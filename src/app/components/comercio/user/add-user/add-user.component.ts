@@ -97,7 +97,6 @@ export class AddUserComponent implements OnInit {
     )
   }
   submitUsers(){
-    console.log(this.miFormulario.value);
     this.userServices.createUser(this.miFormulario.value)
     .subscribe(
       res => {

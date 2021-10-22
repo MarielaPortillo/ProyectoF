@@ -39,6 +39,10 @@
                                         matTooltip="Eliminar Comercio">
                                         <mat-icon>delete</mat-icon>
                                     </button>
+                                    <button mat-icon-button class="edit" matTooltip="Editar usuario">
+                                        <mat-icon (click)="editComercio(c._id)" [routerLink]="['/','viewComercio', c._id]">edit</mat-icon>
+                                        VER MAS
+                                    </button>
                                 </td>
                             </ng-container>
                 

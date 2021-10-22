@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { ComercioService } from 'src/app/service/comercio/comercio.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { comentarios } from 'src/app/models/comentario';
 
 @Component({
   selector: 'app-one-comercio',
@@ -14,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 export class OneComercioComponent implements OnInit {
 
   comercios: Comercio[] = [];
+  comentarios: comentarios[] = [];
   comercio: Comercio = {} as Comercio;
   comer: any;
   mapa: Mapboxgl.Map;
@@ -28,6 +30,7 @@ export class OneComercioComponent implements OnInit {
 
   ngOnInit(): void {
     this.getComercios();
+    this.getComentarios();
     (Mapboxgl as any).accessToken = environment.tokenmapa;
     this.mapa = new Mapboxgl.Map({
       container: 'contenedormapa',
@@ -35,8 +38,21 @@ export class OneComercioComponent implements OnInit {
       center: [-88.93886745727536, 14.040336479634533],
       zoom: 15.5
     });
-    var id = "616c9b4340e63571f40beebb";
-    this.getComercio();
+    
+    const param = this.route.snapshot.params;
+    console.log(param)
+    if (param) {
+      this.getComercio(param.id);
+      this.comercioService.oneComercio(param.id)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.comercio = res;
+        },
+        err => console.log(err)
+      )
+    }
+    
 
     this.route.paramMap.subscribe((paramMap: any) => {
       const { params } = paramMap
@@ -86,16 +102,24 @@ export class OneComercioComponent implements OnInit {
         err => console.log(err),
       )
   }
-  getComercio() {
-    
-    this.comercioService.oneComercio(this.comercio._id)
+  getComentarios() {
+    this.comercioService.listComentarios()
       .subscribe(
-        (res: Comercio[]) => {
+        (res: comentarios[]) => {
+          console.log(res,+"algo para distinguir comentarios");
+          this.comentarios = res;
+        },
+        err => console.log(err),
+      )
+  }
+  getComercio(id: string | undefined) {
+    
+    this.comercioService.oneComercio(id)
+      .subscribe(
+        (res: Comercio) => {
           console.log(res);
-          this.comercios = res;
-          this, this.comercios.forEach(co => {
-            this.marcador(co);
-          })
+          this.comercio = res;
+          this.marcador(this.comercio)
         },
         err => console.log(err),
       )

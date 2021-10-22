@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { comentarios } from 'src/app/models/comentario';
 import { Categoria } from 'src/app/models/comercio/categoria';
 import { Comercio } from 'src/app/models/comercio/comercio';
 
@@ -19,6 +20,9 @@ export class ComercioService {
   ) { }
   listComercio(): Observable<Comercio[]> {
     return this.http.get<Comercio[]>(this.URL + '/listadoComercios');
+  }
+  listComentarios():Observable<comentarios[]> {
+    return this.http.get<comentarios[]>(this.URL + '/comentarioExtra');
   }
   getCategoria(): Observable<Categoria[]>{
     return this.http.get<Categoria[]>(this.URL+'/listCategorias');

@@ -32,6 +32,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { AddpeliculaComponent } from './components/cineApp/addpelicula/addpelicula.component';
 import { ComercioAddComponent } from './components/comercio/comercio/comercio-add/comercio-add.component';
 import { ComercioEditComponent } from './components/comercio/comercio/comercio-edit/comercio-edit.component';
+import { OneComercioComponent } from './components/comercio/comercio/one-comercio/one-comercio.component';
+import { RedsocialComponent } from './components/publicacion/redsocial/redsocial.component';
+import { AddPublicacionComponent } from './components/publicacion/add-publicacion/add-publicacion.component';
+import { ListPublicacionComponent } from './components/publicacion/list-publicacion/list-publicacion.component';
+import { CreatePubliComponent } from './components/publicacion/create-publi/create-publi.component';
 
 
 @NgModule({
@@ -53,7 +58,15 @@ import { ComercioEditComponent } from './components/comercio/comercio/comercio-e
     AddpeliculaComponent,
     EditmoviesComponent,
     ComercioAddComponent,
-    ComercioEditComponent
+    ComercioEditComponent,
+    BoletoComponent,
+    ReservaComponent,
+    OneComercioComponent,
+    RedsocialComponent,
+    AddPublicacionComponent,
+    ListPublicacionComponent,
+    CreatePubliComponent,
+
   ],
   imports: [
     BrowserModule,
