@@ -73,7 +73,7 @@ export class EditmoviesComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res);
-        this.router.navigate(['/all-movies'])
+        this.router.navigate(['/all-peliculas'])
       },
       err => console.log(err)
     )

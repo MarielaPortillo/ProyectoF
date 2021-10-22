@@ -64,8 +64,7 @@ export class ComercioListComponent implements OnInit {
   editComercio(id: string | undefined ){
     
     this.comercioService.oneComercio(id)
-        .subscribe(
-          response=>{
+        .subscribe(response=>{
             console.log(response)
             this.comercios=response;
           });

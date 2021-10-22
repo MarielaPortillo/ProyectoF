@@ -61,6 +61,7 @@ export class EditUserComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res);
+        this.router.navigate(['/list-users'])
       },
       err => console.log(err)
     )
