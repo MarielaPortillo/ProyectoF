@@ -1,82 +1,123 @@
+
 <div class="container">
     <div class="row">
-        <h1>Add Nuevo Boleto cineapp+</h1>
+        <h1>Add new boleto</h1>
     </div>
 </div>
 
-
 <div class="container form-add">
-    <form formGroup]="miFormulario" (ngSubmit)="edit ? updateBoletos() : submitBoletos()">
+    <form [formGroup]="miFormulario" (ngSubmit)="edit ? updateBoletos() : submitBoletos()">
         <div class="row">
             <div class="col-6">
 
-                <label for="">Pelicula:</label>
-                <select class="form-control select-option"  name="pelicula" *ngFor="let p of pelicula" >
-                    <option [(ngModel)]="p._id" >
-                        {{p.titulo}}
-                    </option>
-                </select>
-                <p *ngIf="!miFormulario.controls['pelicula'].valid" class="text-danger">Escoja la pelicula del boleto</p>
 
-
-
-                <label for="">Comercio:</label>
-                <select class="form-control select-option"  name="comercio" *ngFor="let c of comercio" >
-                    <option [(ngModel)]="c._id" >
-                        {{c.nombreComercio}}
-                    </option>
-                </select>
-                <p *ngIf="!miFormulario.controls['comercio'].valid" class="text-danger">Escoja nombre del comercio</p>
-
-
+            
                 <label for="">Num. Boleto:</label>
-                <input type="text" class="form-control"  formControlName="numBoleto" placeholder="1, 2, 3">
-                <p *ngIf="!miFormulario.controls['numBoleto'].valid" class="text-danger">El Num. Boleto debe tener un valor</p>
+                <input type="text" class="form-control"  formControlName="numBoleto" placeholder="numero identificador auto-incrementable">
+            
+
+                <label for="comercio">Comercio:</label>
+                    <select class="form-control select-option" id="comercio" formControlName="comercio">
+                        <option  *ngFor="let c of comercio" [ngValue]="c.nombreComercio" >{{c.nombreComercio}}</option>
+                    </select>
+                    <p *ngIf="!miFormulario.controls['comercio'].value" class="text-danger">Seleccione un comercio</p>
+                      
 
 
-                <label for="">Horario:</label>
-                <select class="form-control select-option"  name="horario" *ngFor="let h of horario" >
-                    <option [(ngModel)]="h._id" >
-                        {{h.hora}}
-                    </option>
-                </select>
-                <p *ngIf="!miFormulario.controls['horario'].valid" class="text-danger">Escoja Hora del Boleto</p>
-
-               
-                <label for="">Sala:</label>
-                <select class="form-control select-option"  name="sala" *ngFor="let s of sala" >
-                    <option [(ngModel)]="s._id" >
-                        {{s.sala}}
-                    </option>
-                </select>
-                <p *ngIf="!miFormulario.controls['sala'].valid" class="text-danger">Escoja la sala del Boleto</p>
+                    
+             <label for="pelicula">Pelicula:</label>
+                    <select class="form-control select-option" id="pelicula" formControlName="pelicula" [(ngModel)]="pelicula">
+                        <option  *ngFor="let p of pelicula" [ngValue]="p.titulo" >{{p.titulo}}</option>
+                    </select>
+                    <p *ngIf="!miFormulario.controls['pelicula'].value" class="text-danger">Seleccione una pelicula</p>
+                      
 
 
+                    <label for="">Precio:</label>
+                    <input type="text" formControlName="precio" class="form-control" placeholder="Precio de la pelicula" >
+                    <p *ngIf="!miFormulario.controls['precio'].valid" class="text-danger">Precio</p> 
+        
 
-                <label for="">Precio:</label>
-                <input type="text" class="form-control"  formControlName="precio" placeholder="$2.40, $3.00">
-                <p *ngIf="!miFormulario.controls['precio'].valid" class="text-danger">El precio debe contener un valor</p>
-               
-
-                <label for="">Descuento:</label>
-                <input type="text" class="form-control"  formControlName="descuento" placeholder="S1, S2">
-                <p *ngIf="!miFormulario.controls['descuento'].valid" class="text-danger">La sala debe contener un valor</p>
-               
-                <label for="">Total:</label>
-                <input type="text" class="form-control"  formControlName="total" placeholder="$2.40, $3.00">
-                <p *ngIf="!miFormulario.controls['total'].valid" class="text-danger">Total debe contener un valor</p>
-               
-
-          
-            </div>
-
-            <div class="col-6">
+                <!--<label for="">Precio:</label>
+                <input type="text"  id="precio"  placeholder="precio boleto pelicula" value="{{pelicula?.precioBoleto}" > 
+                
+                <p *ngIf="!miFormulario.controls['precio'].valid" class="text-danger">Precio</p> -->
+    
                 
                
             </div>
+
+            <div class="col-6">
+                <label for="sala">Sala:</label>
+                <select class="form-control select-option" id="sala" formControlName="sala">
+                    <option  *ngFor="let s of sala" [ngValue]="s.sala" >{{s.sala}}</option>
+                </select>
+                <p *ngIf="!miFormulario.controls['sala'].value" class="text-danger">Seleccione una sala</p>
+
+               
+                <label for="hora">Hora:</label>
+                <select class="form-control select-option" id="hora" formControlName="hora">
+                    <option  *ngFor="let h of horario" [ngValue]="h.hora" >{{h.hora}}</option>
+                </select>
+                <p *ngIf="!miFormulario.controls['horario'].value" class="text-danger">Seleccione una hora</p>
+
             
-            <button [disabled]="!miFormulario.valid" class="btn btn-primary btn-save">Guardar Boleto</button>
+            </div>
+            
+            <button  class="btn btn-primary btn-save">Save reservation</button>
         
         </div>
     </form>
 </div>
+
+
+<script type="text/javascript">
+    function ShowSelected()
+    {
+    /* Para obtener el valor */
+    var cod = document.getElementById("comercio").value;
+    alert(cod);
+    
+    /* Para obtener el texto */
+    var combo = document.getElementById("comercio");
+    var selected = combo.options[combo.selectedIndex].text;
+    alert(selected);
+    }
+
+
+    function ShowSelected()
+    {
+    /* Para obtener el valor */
+    var cod = document.getElementById("pelicula").value;
+    alert(cod);
+    
+    /* Para obtener el texto */
+    var combo = document.getElementById("pelicula");
+    var selected = combo.options[combo.selectedIndex].text;
+    alert(selected);
+    }
+
+    function ShowSelected()
+    {
+    /* Para obtener el valor */
+    var cod = document.getElementById("sala").value;
+    alert(cod);
+    
+    /* Para obtener el texto */
+    var combo = document.getElementById("sala");
+    var selected = combo.options[combo.selectedIndex].text;
+    alert(selected);
+    }
+
+    function ShowSelected()
+    {
+    /* Para obtener el valor */
+    var cod = document.getElementById("hora").value;
+    alert(cod);
+    
+    /* Para obtener el texto */
+    var combo = document.getElementById("hora");
+    var selected = combo.options[combo.selectedIndex].text;
+    alert(selected);
+    }
+</script>

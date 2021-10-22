@@ -1,5 +1,4 @@
-
-
+<!--
 <div class="container">
     <div class="row">
         <label for="">Buscar Reserva ID</label>
@@ -61,4 +60,78 @@
         
         </div>
     </form>
+</div> -->
+
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <h1>Add new reserva</h1>
+    </div>
 </div>
+
+<div class="container form-add">
+    <form [formGroup]="miFormulario" (ngSubmit)="edit ? updateReservas() : submitReservas()">
+        <div class="row">
+            <div class="col-6">
+
+
+            
+                <label for="">NVenta:</label>
+                <input type="text" class="form-control"  formControlName="NVenta" placeholder="numero identificador auto-incrementable">
+            
+
+             <label for="pelicula">Pelicula:</label>
+                    <select class="form-control select-option" id="pelicula" formControlName="pelicula">
+                        <option  *ngFor="let p of Pelicula" [ngValue]="p.titulo" >{{p.titulo}}</option>
+                    </select>
+                    <p *ngIf="!miFormulario.controls['pelicula'].value" class="text-danger">Seleccione una pelicula</p>
+                      
+
+                    
+
+                <label for="">Cantidad:</label>
+                <input type="text" formControlName="cantidad" class="form-control" placeholder="Cantidad de reserva peliculas" >
+                <p *ngIf="!miFormulario.controls['cantidad'].valid" class="text-danger">La cantidad de la reserva</p> 
+    
+                
+               
+            </div>
+
+            <div class="col-6">
+                <label for="">Total:</label>
+                <input type="text" class="form-control"  formControlName="total" placeholder="Total de la reserva">
+                <p *ngIf="!miFormulario.controls['total'].valid" class="text-danger">Total de la reserva</p>
+
+               
+                <label for="">Fecha de estreno:</label>
+                <input type="date" class="form-control"  formControlName="fechaReser" placeholder="28/08/2021">
+                <p *ngIf="!miFormulario.controls['fechaReser'].valid" class="text-danger">Escriba la fecha de la reserva</p>
+               
+            
+            </div>
+            
+            <button [disabled]="!miFormulario.valid" class="btn btn-primary btn-save">Save reservation</button>
+        
+        </div>
+    </form>
+</div>
+
+
+<script type="text/javascript">
+    function ShowSelected()
+    {
+    /* Para obtener el valor */
+    var cod = document.getElementById("pelicula").value;
+    alert(cod);
+    
+    /* Para obtener el texto */
+    var combo = document.getElementById("pelicula");
+    var selected = combo.options[combo.selectedIndex].text;
+    alert(selected);
+    }
+</script>

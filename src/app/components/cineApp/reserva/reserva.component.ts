@@ -14,7 +14,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ReservaComponent implements OnInit {
 
-  pelicula: peliculas[] = [];
+  Pelicula: peliculas[] = [];
+  //seleccionado: peliculas;
   Reserva: reservas[]=[];
   reser:any;
 
@@ -44,7 +45,7 @@ export class ReservaComponent implements OnInit {
   ) { 
     this.miFormulario = new FormGroup({
       'NVenta' : new FormControl('',),
-      'pelicula': new FormControl('',[Validators.required,Validators.maxLength(15)]),
+      'pelicula': new FormControl('',),
       'cantidad':  new FormControl('',),
       'total': new FormControl('',),
       'fechaReser': new FormControl('',)
@@ -62,7 +63,7 @@ export class ReservaComponent implements OnInit {
     .subscribe(
       (res :peliculas[]) => {
         console.log(res);
-        this.pelicula = res ;
+        this.Pelicula = res ;
       },
       err => console.log(err),
     )

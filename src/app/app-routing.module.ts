@@ -32,9 +32,9 @@ const routes: Routes = [
   {path:"createUser", component: AddUserComponent},
   {path:"list-comercios",component:ComercioListComponent, canActivate:[AuthGuard]},
   {path:"edit-user/:id", component: UserEditComponent, canActivate:[AuthGuard]},
-  {path:"add-pelicula",component:AddpeliculaComponent, canActivate:[AuthGuard]},
-  {path:"all-peliculas",component:PeliculaComponent, canActivate:[AuthGuard,]},
-  {path:"app-editmovies/:id", component: EditmoviesComponent, canActivate:[AuthGuard]},
+  {path:"add-pelicula",component:AddpeliculaComponent},
+  {path:"all-peliculas",component:PeliculaComponent},
+  {path:"app-editmovies/:id", component: EditmoviesComponent },
   { path: 'publicacion', component: DashboardComponent, canActivate:[AuthGuard]},
 
   {path:"add-boleto",component:BoletoComponent},
