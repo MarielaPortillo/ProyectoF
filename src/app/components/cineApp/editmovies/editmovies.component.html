@@ -51,7 +51,14 @@
                 <p *ngIf="!miFormulario.controls['detalle_id'].valid" class="text-danger">Escoja el direcctor para el detalle</p>-->
             </div>
             
-            <button  class="btn btn-primary btn-save">Guardar Cambios</button>
+            <div class="d-flex justify-content-center mt-3 login_container">
+                <button  class="btn btn-primary btn-save">
+                    EDITAR
+                </button>
+                <button class="btn btn-cancelar" [routerLink]="['/all-peliculas']" >
+                    CANCELAR
+                </button>
+            </div>
         
         </div>
     </form>

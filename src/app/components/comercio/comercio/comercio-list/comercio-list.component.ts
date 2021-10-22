@@ -64,9 +64,10 @@ export class ComercioListComponent implements OnInit {
   editComercio(id: string | undefined ){
     
     this.comercioService.oneComercio(id)
-        .subscribe(response=>{
+        .subscribe(
+          response=>{
             console.log(response)
-            this.comercios=response;
+            this.comercio=response;
           });
         
    
@@ -93,6 +94,8 @@ export class ComercioListComponent implements OnInit {
 
 
   marcador(comerci: Comercio) {
+    const lng = comerci.lng
+    const lat = comerci.lat
     const globo = new Mapboxgl.Popup({ className: 'globito' })
       .setHTML(`<p> ${comerci.nombreComercio} </p>
                 <p>Contactenos al: </p>
@@ -105,7 +108,7 @@ export class ComercioListComponent implements OnInit {
       draggable: true,
       color: "orange"
     })
-      .setLngLat([comerci.lng, comerci.lat])
+      .setLngLat([lng, lat])
       .setPopup(globo)
       .addTo(this.mapa);
 

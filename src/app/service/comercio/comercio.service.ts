@@ -23,16 +23,16 @@ export class ComercioService {
   getCategoria(): Observable<Categoria[]>{
     return this.http.get<Categoria[]>(this.URL+'/listCategorias');
   };
-  oneComercio(id: String | undefined): Observable<Comercio[]> {
-    return this.http.get<Comercio[]>(this.URL + '/uno/'+id);
+  oneComercio(id: String | undefined): Observable<Comercio> {
+    return this.http.get<Comercio>(this.URL + '/uno/'+id);
   }
 
   createComercio(comercio: Comercio): Observable<Comercio> {
     return this.http.post<Comercio>(this.URL + '/registrar', comercio);
   }
  
-  editComercio(comercio: Comercio): Observable<Comercio> {
-    return this.http.put<Comercio>(this.URL + '/editarComercio/'+`${comercio._id}`, comercio);
+  editComercio(id: string | undefined,comercio: Comercio): Observable<Comercio> {
+    return this.http.put<Comercio>(this.URL + '/editarComercio/'+id, comercio);
   }
   deleteComercio(id: string): Observable<Comercio> {
     return this.http.delete<Comercio>(this.URL + '/eliminarComercio/'+id);

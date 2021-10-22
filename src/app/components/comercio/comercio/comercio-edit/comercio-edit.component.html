@@ -1,1 +1,50 @@
-<p>comercio-edit works!</p>
+
+<div class="container">
+    <div class="row">
+        <h1>Add new movie to cineapp+</h1>
+    </div>
+</div>
+
+<div class="container form-add">
+    <form (ngSubmit)="updateComercio()">
+        <div class="row">
+            <div class="col-6">
+                <label for="">Nombre del cine:</label>
+                <input type="text" name="nombreComercio" [(ngModel)]="comercio.nombreComercio" class="form-control"
+                    placeholder="Nombre de la pelicula">
+
+                <label for="">Propietario:</label>
+                <input type="text" class="form-control" [(ngModel)]="comercio.propietario" name="propietario"
+                    placeholder="Don Andy">
+                    <label for="">Telefono:</label>
+                    <input type="text" class="form-control" [(ngModel)]="comercio.telefono" name="telefono"
+                        placeholder="Don Andy">
+            </div>
+
+            <div class="col-6">
+                
+                <label for="">Redes sociales:</label>
+                <input type="text" class="form-control" [(ngModel)]="comercio.redes_sociales" name="redes_sociales"
+                    placeholder="Redes sociales">
+                <label for="">Logo:</label>
+                <input type="text" class="form-control" [(ngModel)]="comercio.logo" name="logo"
+                    placeholder="Redes sociales">
+                
+                <label for="">Descripcion:</label>
+                <input type="text" class="form-control" [(ngModel)]="comercio.descripcion" name="descripcion"
+                    placeholder="Estado">
+
+            </div>
+
+            <div class="d-flex justify-content-center mt-3 login_container">
+                <button  class="btn btn-primary btn-save">
+                    EDITAR
+                </button>
+                <button class="btn btn-cancelar" [routerLink]="['/list-comercios']" >
+                    CANCELAR
+                </button>
+            </div>
+
+        </div>
+    </form>
+</div>

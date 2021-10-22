@@ -7,7 +7,7 @@
             <div class="col-12">
                 <div class="mapa" id="contenedormapa"></div>
             </div>
-            <button class="btn btn-primary btn-action" mat-raised-button color="primary" [routerLink]="['/add-comercio']">
+            <button class="btn btn-primary btn-action" mat-raised-button color="primary" (click)=" openDialog()">
                 + Agregar  Nuevo Comercio
             </button>
         </div>
@@ -33,7 +33,7 @@
                                 <th class="subtitulos" mat-header-cell *matHeaderCellDef>ACCIONES</th>
                                 <td mat-cell *matCellDef="let c of comercios" fxLayoutAlign="start">
                                     <button mat-icon-button class="edit" matTooltip="Editar usuario">
-                                        <mat-icon (click)="editComercio(c._id)" [routerLink]="['/','edit-comercio', c._id]">edit</mat-icon>
+                                        <mat-icon (click)="editComercio(c._id)" [routerLink]="['/','addComercio', c._id]">edit</mat-icon>
                                     </button>
                                     <button mat-icon-button (click)="eliminarComercio(c._id)" class="delete"
                                         matTooltip="Eliminar Comercio">
@@ -50,3 +50,4 @@
                     </div>
                 </div>
 </div>
+

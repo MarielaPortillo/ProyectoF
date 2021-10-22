@@ -17,6 +17,7 @@ import { UserService } from './service/comercio/user.service';
 import { UserEditComponent } from './components/comercio/user/user-edit/user-edit.component';
 import { EditmoviesComponent } from './components/cineApp/editmovies/editmovies.component';
 import { ComercioAddComponent } from './components/comercio/comercio/comercio-add/comercio-add.component';
+import { ComercioEditComponent } from './components/comercio/comercio/comercio-edit/comercio-edit.component';
 
 /**
  * ---------------------------OJO-----------------------------------------------
@@ -33,9 +34,11 @@ const routes: Routes = [
   {path:"createUser", component: AddUserComponent},
   {path:"list-comercios",component:ComercioListComponent, canActivate:[AuthGuard]},
   {path:"edit-user/:id", component: UserEditComponent, canActivate:[AuthGuard]},
+  {path:"addComercio/:id", component: ComercioEditComponent, canActivate:[AuthGuard]},
 
   {path:"add-pelicula",component:AddpeliculaComponent, canActivate:[AuthGuard]},
   {path:"all-peliculas",component:PeliculaComponent, canActivate:[AuthGuard,]},
+  
   {path:"app-editmovies/:id", component: EditmoviesComponent, canActivate:[AuthGuard]},
   {path:'publicacion', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:"add-comercio", component:ComercioAddComponent, canActivate:[AuthGuard]},

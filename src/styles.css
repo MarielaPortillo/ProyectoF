@@ -26,6 +26,10 @@ html {
     width: 500px;
     height: 500px;
 }
+#contentmapa{
+    width: 400px;
+    height: 200px;
+}
 
 .globito{
     width: 125px;

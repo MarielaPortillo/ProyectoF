@@ -30,6 +30,8 @@ import { EditmoviesComponent } from './components/cineApp/editmovies/editmovies.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AddpeliculaComponent } from './components/cineApp/addpelicula/addpelicula.component';
+import { ComercioAddComponent } from './components/comercio/comercio/comercio-add/comercio-add.component';
+import { ComercioEditComponent } from './components/comercio/comercio/comercio-edit/comercio-edit.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { AddpeliculaComponent } from './components/cineApp/addpelicula/addpelicu
     UserEditComponent,
     EditmoviesComponent,
     AddpeliculaComponent,
-    EditmoviesComponent
+    EditmoviesComponent,
+    ComercioAddComponent,
+    ComercioEditComponent
   ],
   imports: [
     BrowserModule,
