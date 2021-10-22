@@ -42,6 +42,7 @@ h1 {
     font-size: 25px;
     padding: 10px;
     text-align: center;
+    font-weight: 700 !important;
 }   
 
 li {
@@ -149,20 +150,65 @@ li {
     color: #fff;
 }
 
+.btn-action {
+    width: 250px;
+    padding: 10px 15px;
+    margin: 0 auto 40px;
+    background-color: #282220;
+    color: #fff;
+}
+
+.btn-action:hover {
+    background-color: #312e2d;
+}
+
 .buscar {
     border: 2px solid #D43B26 !important;
     font-size: 14px;
 }
 
-.card-title {
+.card {
+    margin: 10px auto 40px;
+}
+
+.card-body h3 {
     text-align: center;
-}  
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 20px;
+}
 
 .details-movie {
     text-align: center;
     font-size: 13px;
     margin-bottom: -5px;
-}   
+}
+
+.tablas {
+    margin-bottom: 50px;
+}
+
+.edit, .delete {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: #282220;
+    margin-right: 5px;
+}
+
+.edit:hover {
+    color: #2065ce;
+}
+
+.delete:hover {
+    color: #BE321F;
+}
+
+.subtitulos {
+    font-size: 16px;
+    color: #282220;
+    margin-top: -15px;
+}
 
 .welcome-text {
     text-align: center;
@@ -173,7 +219,7 @@ li {
 }  
 
 .card-img-top {
-    height: 380px;
+    height: 100%px;
     margin: auto;
 }   
 
@@ -325,17 +371,76 @@ li {
     margin-bottom: -5px;
 }
 
-.container-comercio {
+.container-comercio p {
     text-align: center;
+    font-size: 16px;
+}
+
+.container-comercio h1 {
+    font-weight: 700;
+    font-size: 30px;
 }
 
 .container-comercio h3 {
     font-weight: 600;
 }
 
-.mapa {
-    margin: 25px 5px;
+.add-comercio {
+    margin: 60px auto 20px;
+}
+
+.add-comercio h3 {
+    text-align: center;
+}
+
+.input-comercio {
+    margin: 25px auto;
+}
+
+#contenedormapa {
+    width: 100%;
+    margin: 25px 0 40px;
     border: 2px #BE321F solid;
+}
+
+.container-comentario {
+    display: block;
+    margin: auto;
+}
+
+.container-comentario input {
+    
+}
+
+.comentario {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.like {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.like button {
+    background-color: transparent;
+    border: none;
+}
+
+.like i {
+    margin: auto;
+    color: #2065ce;
+    font-size: 45px;
+    text-align: center;
+}
+
+.like p {
+    color: #2065ce;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 5px;
 }
 
 .footer {
@@ -373,6 +478,3 @@ li {
 .rs i:hover {
     color: #fff;
 }
-    
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

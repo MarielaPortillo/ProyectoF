@@ -1,45 +1,40 @@
 <div class="container">
   <div class="row me-auto mb-2 mb-lg-0">
-      <h1>Users List</h1>
-      
+      <h1>Listado de películas en estreno</h1>
+      <button class="btn btn-primary btn-action" mat-raised-button color="primary" (click)=" openDialog()">
+        + Agregar Película
+      </button>
   </div>
 
-</div>
-<div class="me-auto mb-2 mb-lg-0 aling-right">
-<button class="btn btn-primary btn-edit" mat-raised-button color="primary" (click)=" openDialog()">
-  <mat-icon>add</mat-icon>
-  Agregar
-</button>
-</div>
-<div fxLayoutAlign="center">
+<div class="tablas" fxLayoutAlign="center">
 <div class="mat-elevation-z8">
 <table mat-table [dataSource]="peliculas" class="table table-striped"  #tabla1>
   
   <ng-container matColumnDef="Titulo">
-    <th mat-header-cell *matHeaderCellDef> Titulo </th>
+    <th class="subtitulos" mat-header-cell *matHeaderCellDef> TÍTULO</th>
     <td mat-cell *matCellDef="let p of peliculas"> {{p.titulo}} </td>
   </ng-container>
 
   <ng-container matColumnDef="Genero">
-    <th mat-header-cell *matHeaderCellDef> Genero </th>
+    <th class="subtitulos" mat-header-cell *matHeaderCellDef> GÉNERO </th>
     <td mat-cell *matCellDef="let p of peliculas" > {{p.genero}} </td>
   </ng-container>
   <ng-container matColumnDef="Clasificacion">
-    <th mat-header-cell *matHeaderCellDef> Clasificación </th>
+    <th class="subtitulos" mat-header-cell *matHeaderCellDef> CLASIFICACIÓN </th>
     <td mat-cell *matCellDef="let p of peliculas" > {{p.clasificacion}} </td>
   </ng-container>
   <ng-container matColumnDef="Duracion">
-    <th mat-header-cell *matHeaderCellDef> Duracion </th>
+    <th class="subtitulos" mat-header-cell *matHeaderCellDef> DURACIÓN </th>
     <td mat-cell *matCellDef="let p of peliculas" > {{p.duracion}} </td>
   </ng-container>
   <ng-container matColumnDef="Acciones">
-    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <th class="subtitulos" mat-header-cell *matHeaderCellDef>ACCIONES</th>
     <td mat-cell *matCellDef="let p of peliculas" fxLayoutAlign="start">
-      <button mat-icon-button class="pointer" style="color: #1f516f" matTooltip="Editar Pelicula">
+      <button mat-icon-button class="edit" matTooltip="Editar Pelicula">
         <mat-icon (click)="editPelicula(p._id)" [routerLink]="['/','app-editmovies', p._id]" >edit</mat-icon>
       </button>
-      <button mat-icon-button (click)="eliminarPelicula(p._id)" class="pointer"
-        style="color: #e15639" matTooltip="Eliminar Pelicula">
+      <button mat-icon-button (click)="eliminarPelicula(p._id)" class="delete"
+       matTooltip="Eliminar Pelicula">
         <mat-icon>delete</mat-icon>
       </button>
     </td>
@@ -52,4 +47,4 @@
 <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
 </div>
 </div>
-
+</div>
