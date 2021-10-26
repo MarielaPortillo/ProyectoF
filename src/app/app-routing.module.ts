@@ -21,6 +21,7 @@ import { ComercioEditComponent } from './components/comercio/comercio/comercio-e
 import { OneComercioComponent } from './components/comercio/comercio/one-comercio/one-comercio.component';
 import { ListPublicacionComponent } from './components/publicacion/list-publicacion/list-publicacion.component';
 import { AddPublicacionComponent } from './components/publicacion/add-publicacion/add-publicacion.component';
+import { RedsocialComponent } from './components/publicacion/redsocial/redsocial.component';
 
 /**
  * ---------------------------OJO-----------------------------------------------
@@ -45,7 +46,7 @@ const routes: Routes = [
   {path:"app-editmovies/:id", component: EditmoviesComponent, canActivate:[AuthGuard]},
   {path:'publicacion', component: ListPublicacionComponent, canActivate:[AuthGuard]},
   {path:"add-comercio", component:ComercioAddComponent, canActivate:[AuthGuard]},
-  
+  {path:"viewPublicacion/:id", component:RedsocialComponent, },
   {path:"add-publicacion", component:AddPublicacionComponent,},
   {path:"add-boleto",component:BoletoComponent},
   {path:"add-reserva",component:ReservaComponent},

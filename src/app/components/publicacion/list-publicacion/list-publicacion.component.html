@@ -5,14 +5,15 @@
 
 <!-- *ngFor="let r of roles" [ngValue]="r.name" buton (click)="editUser(u._id)" -->
     <div class="row">
-        <div class="col-3" >
+        <div class="col-3" *ngFor="let d of detalles">
             <div class="card">
-                <img src="../../../assets/Perfil6.png" class="card-img-top" alt="...">
+                <a (click)="viewsAument(d._id)" [routerLink]="['/','viewPublicacion', d._id]">
+                    <img [src]="d.imagen" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h3 class="card-title" *ngFor="let p of peliculas"  >{{p.titulo}}</h3>
-                        <h3 class="card-title">Buen comercio</h3>
-                        <h3 class="card-title">Buen comercio</h3>
+                        <h3 class="card-title" >{{d.director}}</h3>
+                        <h3 class="card-title">{{d.sinopsis}}</h3>
                     </div>
+                </a>
               </div>
         </div>
     </div>

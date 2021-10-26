@@ -43,8 +43,26 @@ export class ListPublicacionComponent implements OnInit {
     this.getPeliculas();
     this.dataSource = new MatTableDataSource(this.peliculas);
     this.dataSource.paginator = this.paginator;
+
+    /*this.route.paramMap.subscribe((paramMap:any)=>{
+      const{params}=paramMap
+      console.log(params)
+      this.viewsAument(params._id)
+      
+    })*/
     
     
+  }
+  viewsAument(id: string | undefined ){
+    
+    this.publicacionService.aumentarViews(id)
+        .subscribe(
+          response=>{
+            console.log(response)
+            this.detalle=response;
+          });
+        
+   
   }
   
   openDialog(detalle?: Detalle) {
@@ -60,8 +78,8 @@ export class ListPublicacionComponent implements OnInit {
         },)
     }
   }
-  likes(){
-    this.publicacionService.aumentarLike(this.detalle._id, this.detalle)
+  likes(id: string | undefined){
+    this.publicacionService.aumentarLike(id, this.detalle)
     .subscribe(
       res => {
         console.log(res);

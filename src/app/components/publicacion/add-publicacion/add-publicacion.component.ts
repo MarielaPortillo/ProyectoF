@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { peliculas } from 'src/app/models/cineApp/pelicula';
+import { Comercio } from 'src/app/models/comercio/comercio';
 import { Comentario } from 'src/app/models/publicacion/comentario';
 import { Detalle } from 'src/app/models/publicacion/detalle';
 import { DetalleService } from 'src/app/service/publicacion/detalle.service';
@@ -16,9 +17,11 @@ import { DetalleService } from 'src/app/service/publicacion/detalle.service';
 export class AddPublicacionComponent implements OnInit {
 
   comentario: Comentario[]= [];
+  comercios: Comercio[]= [];
   peliculas: peliculas[]= [];
   detalles: Detalle[]= [];
   detalle: Detalle = {
+    comercio:'',
     director: '',
     actores: '',
     sinopsis: '',
@@ -40,9 +43,8 @@ export class AddPublicacionComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.getPublicaciones();
-    this.getOneMovie();
     this.getPeliculas()
+    this.getComercio()
 
     const param = this.activateRoute.snapshot.params;
     console.log(param)
@@ -60,6 +62,16 @@ export class AddPublicacionComponent implements OnInit {
         this.peliculas = res ;
       },
       err => console.log(err)
+    )
+  }
+  getComercio(){
+    this.detalleService.comercios()
+    .subscribe(
+      (res :Comercio[]) => {
+        console.log(res);
+        this.comercios = res ;
+      },
+      err => console.log(err),
     )
   }
   getPublicaciones(){
@@ -87,7 +99,6 @@ export class AddPublicacionComponent implements OnInit {
     .subscribe(
       res => {
         console.log(res);
-        this.router.navigate(['/publicacion']);
       },
       err => console.log(err)
     )

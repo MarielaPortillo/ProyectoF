@@ -15,25 +15,25 @@
         <div class="col-6">
             <div class="d-flex justify-content-center form_registre">
                 <form (ngSubmit)="submitPublicacion()">
-                    <h3>Registrarse</h3>
-                        
+                    <h3>Creando una nueva publicacion</h3>
+                    <label for="">Comercio:</label>
+                    <input type="text" class="form-control" [(ngModel)]="detalle.comercio" name="comercio" placeholder="Comercio" autofocus>
                     <label for="">Director\es:</label>
-                    <input type="text" class="form-control" [(ngModel)]="detalle.director" name="director" placeholder="Director" autofocus>
+                    <input type="text" class="form-control" [(ngModel)]="detalle.director" name="director" placeholder="Director" >
                     <label for="">Actor\es:</label>
-                    <input type="email" class="form-control" [(ngModel)]="detalle.actores" name="actores" placeholder="Actores" autofocus>
+                    <input type="email" class="form-control" [(ngModel)]="detalle.actores" name="actores" placeholder="Actores">
                     <label for="">Sinopsis:</label>
                     <input type="text" class="form-control" [(ngModel)]="detalle.sinopsis" name="sinopsis" placeholder="Descripcion">
-                    <label for="">Seleccione un pelicula:</label>
-                    <select class="form-control select-option" id="pelicula" name="pelicula">
-                        <option *ngFor="let p of peliculas" [ngValue]="p.titulo" >{{p.titulo}}</option>
-                    </select>
+                    <label for="">Nombre de la pelicula:</label>
+                    <input type="text" class="form-control" [(ngModel)]="detalle.pelicula" name="pelicula" placeholder="Pelicula">
                     <label for="">Imagen:</label>
                     <input type="text" class="form-control" [(ngModel)]="detalle.imagen" name="imagen" placeholder="URL de la imagen">
                     <div class="d-flex justify-content-center mt-3 login_container">
                     <button class="btn btn-primary btn-save" >
                         REGISTRAR
                       </button>
-                    <button class="btn btn-cancelar" >CANCELAR
+                      <button class="btn btn-primary btn-save" [routerLink]="['/publicacion']">
+                        IR AL LISTADO
                       </button>
                 </div>
                 </form>

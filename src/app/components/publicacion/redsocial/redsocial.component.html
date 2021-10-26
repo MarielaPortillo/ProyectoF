@@ -1,6 +1,6 @@
 <div class="card bg-dark text-white">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h2 class="card-title">Titulo</h2>
+        <h2 class="card-title">{{detalle.director}}</h2>
     </div>
     <div class="card-body">
         <p>Sinopsis</p>
@@ -9,15 +9,15 @@
         </div>
     </div>
     <div class="card-footer d-flex justify-content-between align-items-center">
-        <button class="btn btn-success" id="btn-like" data-id="">
+        <button class="btn btn-success" id="btn-like" (click)="likes(detalle._id)" data-id="">
             <i class="fas fa-thumbs-up"></i> Like
         </button>
         <p>
-            <span class="likes-count">Like</span>
+            <span class="likes-count">{{detalle.likes}}</span>
             <i class="fas fa-heart"></i>
         </p>
         <p>
-            <i class="fas fa-eye"></i> Views
+            <i class="fas fa-eye" ></i> {{detalle.views}}
         </p>
         <p>
             <i class="far fa-clock"></i>
